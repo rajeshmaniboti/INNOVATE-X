@@ -1,0 +1,3029 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INNOVATE X – Future Starts Here</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#040814',
+              900: '#070d21',
+              850: '#0b1430',
+              800: '#101c42',
+            },
+            electric: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            },
+            violetx: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+          },
+          animation: {
+            'float-slow': 'floatSlow 7s ease-in-out infinite',
+            'float-reverse': 'floatReverse 8.5s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3.5s ease-in-out infinite',
+            'spin-slow': 'spin 28s linear infinite',
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-16px) rotate(2deg)' },
+            },
+            floatReverse: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(14px) rotate(-2deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+              '50%': { opacity: '0.95', transform: 'scale(1.06)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Custom Glassmorphism, Grid Background & Scrollbar Styling */
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: #040814;
+      color: #f8fafc;
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+
+    .glass-panel {
+      background: rgba(13, 23, 54, 0.58);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: linear-gradient(155deg, rgba(16, 29, 68, 0.65) 0%, rgba(7, 13, 33, 0.82) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 20px 45px -12px rgba(14, 165, 233, 0.25), 0 0 24px rgba(139, 92, 246, 0.18);
+    }
+
+    .cyber-grid {
+      background-image:
+        linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .text-gradient-brand {
+      background: linear-gradient(120deg, #ffffff 0%, #7dd3fc 38%, #c084fc 75%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-primary-glow {
+      background: linear-gradient(135deg, #0284c7 0%, #6d28d9 100%);
+      box-shadow: 0 0 24px rgba(14, 165, 233, 0.35), 0 10px 25px -8px rgba(109, 40, 217, 0.65);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary-glow:hover {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.55), 0 14px 28px -8px rgba(139, 92, 246, 0.8);
+    }
+
+    /* Custom subtle scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #040814;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.28);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.55);
+    }
+
+    /* Reveal animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-navy-950 text-slate-100 antialiased selection:bg-electric-500/30 selection:text-electric-400">
+
+  <!-- Ambient Background Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] rounded-full bg-electric-500/15 blur-[130px] animate-pulse-glow"></div>
+    <div class="absolute top-1/3 -right-36 w-[38rem] h-[38rem] rounded-full bg-violetx-600/15 blur-[140px] animate-pulse-glow"></div>
+    <div class="absolute bottom-0 left-1/4 w-[32rem] h-[32rem] rounded-full bg-indigo-500/10 blur-[130px]"></div>
+    <div class="absolute inset-0 cyber-grid opacity-70"></div>
+  </div>
+
+  <!-- Toast / Status Banner (replaces alert/confirm) -->
+  <div id="toast-container" class="fixed top-20 right-4 z-[90] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-2 sm:px-0"></div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. NAVIGATION BAR & MULTI-LANGUAGE SWITCHER                           -->
+  <!-- ===================================================================== -->
+  <header id="top-nav" class="sticky top-0 z-50 border-b border-white/10 bg-navy-950/80 backdrop-blur-xl transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20 gap-3">
+
+        <!-- Brand Logo -->
+        <a href="#hero" class="flex items-center gap-3 group shrink-0">
+          <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-electric-500 via-indigo-500 to-violetx-600 p-[1.5px] shadow-lg shadow-electric-500/20 group-hover:scale-105 transition-transform">
+            <div class="w-full h-full rounded-[10.5px] bg-navy-950 flex items-center justify-center">
+              <svg class="w-6 h-6 text-electric-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke-linejoin="round" />
+                <path d="M12 22V12M12 12L21 7M12 12L3 7" stroke-linejoin="round" class="text-violetx-400" />
+                <circle cx="12" cy="12" r="2.2" fill="currentColor" class="text-white" />
+              </svg>
+            </div>
+          </div>
+          <div class="leading-tight">
+            <div class="font-display font-bold text-base sm:text-lg tracking-wide text-white flex items-center gap-1.5">
+              <span>INNOVATE</span>
+              <span class="px-1.5 py-0.5 text-[11px] rounded-md bg-gradient-to-r from-electric-500/25 to-violetx-500/25 border border-electric-400/40 text-electric-400 font-bold">X</span>
+            </div>
+            <div class="text-[10px] sm:text-[11px] tracking-wider uppercase text-slate-400 font-medium" data-i18n="tagline">
+              Future Starts Here
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden xl:flex items-center gap-5 text-sm font-medium text-slate-300">
+          <a href="#about" class="hover:text-electric-400 transition-colors" data-i18n="nav_about">About</a>
+          <a href="#services" class="hover:text-electric-400 transition-colors" data-i18n="nav_services">Services</a>
+          <a href="#products" class="hover:text-electric-400 transition-colors" data-i18n="nav_products">Products</a>
+          <a href="#team" class="hover:text-electric-400 transition-colors" data-i18n="nav_team">Team</a>
+          <a href="#ai-suite" class="hover:text-electric-400 transition-colors" data-i18n="nav_ai">AI Suite</a>
+          <a href="#careers" class="hover:text-electric-400 transition-colors" data-i18n="nav_careers">Careers</a>
+          <a href="#portal" class="hover:text-electric-400 transition-colors" data-i18n="nav_portal">Portal</a>
+          <a href="#contact" class="hover:text-electric-400 transition-colors" data-i18n="nav_contact">Contact</a>
+        </nav>
+
+        <!-- Right Controls: Language Switcher + Portal Quick Button + Mobile Menu -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Multi-language Switcher (EN, ES, FR, HI) -->
+          <div class="relative flex items-center bg-navy-900/90 border border-white/15 rounded-xl px-2 py-1.5">
+            <svg class="w-4 h-4 text-electric-400 mr-1.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+            <select id="lang-select" aria-label="Select Language" class="bg-transparent text-xs sm:text-sm font-semibold text-white focus:outline-none cursor-pointer pr-1">
+              <option value="en" class="bg-navy-900 text-white">EN</option>
+              <option value="es" class="bg-navy-900 text-white">ES</option>
+              <option value="fr" class="bg-navy-900 text-white">FR</option>
+              <option value="hi" class="bg-navy-900 text-white">HI</option>
+            </select>
+          </div>
+
+          <!-- Customer Portal / Assistant Trigger -->
+          <a href="#portal" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-white transition-all">
+            <svg class="w-4 h-4 text-violetx-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+            </svg>
+            <span data-i18n="btn_portal">Portal</span>
+          </a>
+
+          <!-- Get Started CTA -->
+          <a href="#ai-estimator" class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white btn-primary-glow">
+            <span data-i18n="hero_cta_secondary">Get Started</span>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-btn" type="button" aria-label="Toggle Navigation" class="xl:hidden p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white transition">
+            <svg id="menu-open-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden xl:hidden pb-4 pt-2 border-t border-white/10 space-y-1">
+        <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_about">About</a>
+        <a href="#services" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_services">Services</a>
+        <a href="#products" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_products">Products</a>
+        <a href="#team" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_team">Team</a>
+        <a href="#ai-suite" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_ai">AI Suite</a>
+        <a href="#careers" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_careers">Careers</a>
+        <a href="#portal" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_portal">Portal</a>
+        <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm text-slate-200 hover:bg-white/5" data-i18n="nav_contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- ===================================================================== -->
+    <!-- 2. HERO SECTION + LIVE STARTUP GROWTH STATISTICS BAR                  -->
+    <!-- ===================================================================== -->
+    <section id="hero" class="relative pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+          <!-- Hero Left Copy -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-electric-500/10 border border-electric-400/30 text-electric-400 text-xs sm:text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span data-i18n="hero_badge">INNOVATE X – Future Starts Here • Next-Gen AI & Software</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-gradient-brand" data-i18n="hero_title">
+              Turning Innovative Ideas Into Reality.
+            </h1>
+
+            <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="hero_subtitle">
+              We empower businesses with intelligent technology and creative digital solutions.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-white btn-primary-glow">
+                <span data-i18n="hero_cta_primary">Explore Our Solutions</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#ai-estimator" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-white/5 hover:bg-white/10 border border-white/20 text-white transition-all">
+                <svg class="w-4 h-4 text-violetx-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linejoin="round" />
+                </svg>
+                <span data-i18n="hero_cta_secondary">Get Started</span>
+              </a>
+            </div>
+
+            <!-- Trust Micro-strip -->
+            <div class="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                ISO 27001 & SOC2 Ready Architectures
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-electric-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                24/7 Autonomous AI & Engineering Support
+              </span>
+            </div>
+          </div>
+
+          <!-- Hero Right Floating 3D/SVG Tech Illustration -->
+          <div class="lg:col-span-5 relative flex items-center justify-center">
+            <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+              <!-- Outer Orbital Ring -->
+              <div class="absolute inset-4 rounded-full border border-dashed border-electric-400/30 animate-spin-slow"></div>
+              <div class="absolute inset-12 rounded-full border border-violetx-400/25"></div>
+
+              <!-- Central Futuristic 3D Isometric Core SVG -->
+              <svg viewBox="0 0 420 420" class="w-full h-full drop-shadow-[0_0_45px_rgba(56,189,248,0.3)] animate-float-slow" fill="none">
+                <defs>
+                  <linearGradient id="hexGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.9" />
+                  </linearGradient>
+                  <linearGradient id="panelGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.24" />
+                    <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.12" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Glowing Core Aura -->
+                <circle cx="210" cy="210" r="115" fill="url(#panelGlass)" />
+
+                <!-- 3D Cube / Polyhedron Frame -->
+                <polygon points="210,82 320,145 320,275 210,338 100,275 100,145" fill="url(#panelGlass)" stroke="url(#hexGrad1)" stroke-width="2.2" />
+                <polyline points="100,145 210,208 320,145" stroke="#7dd3fc" stroke-width="1.8" stroke-opacity="0.7" />
+                <line x1="210" y1="208" x2="210" y2="338" stroke="#c084fc" stroke-width="1.8" stroke-opacity="0.7" />
+
+                <!-- Inner Neural Nodes -->
+                <circle cx="210" cy="82" r="7" fill="#38bdf8" />
+                <circle cx="320" cy="145" r="7" fill="#a78bfa" />
+                <circle cx="320" cy="275" r="7" fill="#38bdf8" />
+                <circle cx="210" cy="338" r="7" fill="#a78bfa" />
+                <circle cx="100" cy="275" r="7" fill="#38bdf8" />
+                <circle cx="100" cy="145" r="7" fill="#a78bfa" />
+
+                <!-- Central Quantum Core -->
+                <circle cx="210" cy="208" r="34" fill="#070d21" stroke="url(#hexGrad1)" stroke-width="3" />
+                <circle cx="210" cy="208" r="14" fill="#38bdf8" />
+                <circle cx="210" cy="208" r="24" stroke="#c084fc" stroke-width="1.4" stroke-dasharray="5 5" />
+
+                <!-- Floating Telemetry Bars -->
+                <rect x="44" y="72" width="112" height="54" rx="12" fill="#0b1430" fill-opacity="0.9" stroke="#38bdf8" stroke-opacity="0.4" />
+                <text x="58" y="94" fill="#94a3b8" font-size="10" font-family="Inter, sans-serif">AI INFERENCE</text>
+                <text x="58" y="113" fill="#38bdf8" font-size="14" font-weight="700" font-family="Space Grotesk, sans-serif">99.94% SLA</text>
+
+                <rect x="266" y="294" width="116" height="56" rx="12" fill="#0b1430" fill-opacity="0.9" stroke="#a78bfa" stroke-opacity="0.45" />
+                <text x="280" y="316" fill="#94a3b8" font-size="10" font-family="Inter, sans-serif">GROWTH VELOCITY</text>
+                <text x="280" y="336" fill="#c084fc" font-size="14" font-weight="700" font-family="Space Grotesk, sans-serif">+184% YoY</text>
+              </svg>
+
+              <!-- Floating Badge 1 -->
+              <div class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl glass-panel text-xs font-medium text-white absolute top-4 right-2 animate-float-reverse">
+                <span class="w-2.5 h-2.5 rounded-full bg-electric-400"></span>
+                <span>Neural Cloud Mesh</span>
+              </div>
+
+              <!-- Floating Badge 2 -->
+              <div class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl glass-panel text-xs font-medium text-white absolute bottom-6 left-0 animate-float-slow">
+                <span class="w-2.5 h-2.5 rounded-full bg-violetx-400"></span>
+                <span>Zero-Trust Edge AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Startup Growth Statistics Bar -->
+        <div class="mt-12 lg:mt-16 glass-panel rounded-2xl p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+              </span>
+              <span class="text-xs sm:text-sm font-semibold tracking-wide uppercase text-slate-200" data-i18n="live_bar_title">
+                Live Startup Growth Telemetry
+              </span>
+            </div>
+            <div class="text-xs text-slate-400 flex items-center gap-3">
+              <span>Auto-updating metrics</span>
+              <span id="live-clock" class="font-mono text-electric-400"></span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div class="p-3.5 rounded-xl bg-navy-900/65 border border-white/10">
+              <div class="text-xs text-slate-400">Active AI Pipelines</div>
+              <div class="mt-1 flex items-baseline justify-between">
+                <span id="live-pipelines" class="font-display text-2xl sm:text-3xl font-bold text-white">1,428</span>
+                <span class="text-xs font-semibold text-emerald-400">+12.4%</span>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900/65 border border-white/10">
+              <div class="text-xs text-slate-400">API Requests / Min</div>
+              <div class="mt-1 flex items-baseline justify-between">
+                <span id="live-requests" class="font-display text-2xl sm:text-3xl font-bold text-electric-400">482.6K</span>
+                <span class="text-xs font-semibold text-emerald-400">Live</span>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900/65 border border-white/10">
+              <div class="text-xs text-slate-400">Enterprise ARR Growth</div>
+              <div class="mt-1 flex items-baseline justify-between">
+                <span id="live-arr" class="font-display text-2xl sm:text-3xl font-bold text-violetx-400">+214%</span>
+                <span class="text-xs font-semibold text-electric-400">Q4 Run</span>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-navy-900/65 border border-white/10">
+              <div class="text-xs text-slate-400">Client Retention Rate</div>
+              <div class="mt-1 flex items-baseline justify-between">
+                <span class="font-display text-2xl sm:text-3xl font-bold text-white">98.7%</span>
+                <span class="text-xs font-semibold text-emerald-400">Top 1%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. ABOUT OUR COMPANY (Vision, Mission, Goals, Timeline, Values)      -->
+    <!-- ===================================================================== -->
+    <section id="about" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-electric-400">About INNOVATE X</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Architecting Intelligent Digital Ecosystems
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+            Founded with a bold conviction that transformative software should feel intuitive, scalable, and human-centered, INNOVATE X partners with ambitious startups and global enterprises to turn complex challenges into high-growth digital products.
+          </p>
+        </div>
+
+        <!-- Vision, Mission, Goals Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-12 h-12 rounded-xl bg-electric-500/15 border border-electric-400/30 flex items-center justify-center text-electric-400 mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2.5">Our Vision</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              To shape a future where adaptive AI, resilient cloud architecture, and refined design accelerate human creativity and sustainable business impact worldwide.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-12 h-12 rounded-xl bg-violetx-500/15 border border-violetx-400/30 flex items-center justify-center text-violetx-400 mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2.5">Our Mission</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Deliver production-grade software, custom AI automation, and data-driven growth engines with speed, transparency, and engineering excellence.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-2.5">Strategic Goals</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Empower 500+ organizations with autonomous workflows, cut client time-to-market by 55%, and maintain industry-leading security & uptime.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Development Timeline & Core Values -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Timeline -->
+          <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-violetx-400">Journey & Milestones</span>
+                <h3 class="font-display text-2xl font-bold text-white mt-1">Company Evolution Timeline</h3>
+              </div>
+              <div class="flex gap-1.5" id="timeline-tabs">
+                <button data-year="2021" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-electric-500 text-white transition">2021</button>
+                <button data-year="2023" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">2023</button>
+                <button data-year="2025" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">2025</button>
+                <button data-year="2026" class="timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">2026+</button>
+              </div>
+            </div>
+
+            <div id="timeline-detail" class="p-5 rounded-xl bg-navy-900/80 border border-electric-400/25 mb-6">
+              <!-- Populated dynamically by JS -->
+            </div>
+
+            <div class="space-y-4 border-l-2 border-gradient-to-b from-electric-400 to-violetx-500 ml-2 pl-5">
+              <div class="relative">
+                <span class="w-3 h-3 rounded-full bg-electric-400 absolute -left-[27px] top-1.5 ring-4 ring-navy-950"></span>
+                <div class="text-xs font-bold text-electric-400">2021 • Genesis</div>
+                <p class="text-sm text-slate-300">Launched INNOVATE X with a core team of 8 engineers focused on cloud-native web systems.</p>
+              </div>
+              <div class="relative">
+                <span class="w-3 h-3 rounded-full bg-violetx-400 absolute -left-[27px] top-1.5 ring-4 ring-navy-950"></span>
+                <div class="text-xs font-bold text-violetx-400">2023 • AI & Product Expansion</div>
+                <p class="text-sm text-slate-300">Introduced NeuralPulse AI & CloudScale Studio; crossed 100+ delivered enterprise launches.</p>
+              </div>
+              <div class="relative">
+                <span class="w-3 h-3 rounded-full bg-emerald-400 absolute -left-[27px] top-1.5 ring-4 ring-navy-950"></span>
+                <div class="text-xs font-bold text-emerald-400">2025–2026 • Global Scale</div>
+                <p class="text-sm text-slate-300">Expanded across multi-region hubs with 85+ specialists, 28 industry awards, and 340+ projects shipped.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Values & Achievements -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass-panel rounded-2xl p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white mb-4">Core Values</h3>
+              <ul class="space-y-3.5 text-sm">
+                <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-900/65 border border-white/10">
+                  <span class="text-electric-400 font-bold mt-0.5">01</span>
+                  <div>
+                    <div class="font-semibold text-white">First-Principles Ingenuity</div>
+                    <p class="text-slate-400 text-xs mt-0.5">We solve root bottlenecks rather than layering fragile patches.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-900/65 border border-white/10">
+                  <span class="text-violetx-400 font-bold mt-0.5">02</span>
+                  <div>
+                    <div class="font-semibold text-white">Radical Craft & Velocity</div>
+                    <p class="text-slate-400 text-xs mt-0.5">Rapid iterative shipping paired with high-polish UI/UX and clean code.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-900/65 border border-white/10">
+                  <span class="text-emerald-400 font-bold mt-0.5">03</span>
+                  <div>
+                    <div class="font-semibold text-white">Security & Trust by Default</div>
+                    <p class="text-slate-400 text-xs mt-0.5">Privacy-first data pipelines, encrypted endpoints, and clear telemetry.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white mb-3">Recognitions & Milestones</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-electric-500/15 border border-electric-400/30 text-electric-300">🏆 Best AI Startup 2025</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-violetx-500/15 border border-violetx-400/30 text-violetx-300">⚡ Fast 100 Tech Innovator</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/15 border border-emerald-400/30 text-emerald-300">🛡️ Cloud Security Excellence</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-500/15 border border-amber-400/30 text-amber-300">✨ Design Systems Gold</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. PRODUCTS & SERVICES GRID (All 8 Services)                          -->
+    <!-- ===================================================================== -->
+    <section id="services" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-violetx-400">Capabilities</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            End-to-End Products & Services
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Eight specialized practice areas engineered to accelerate modern digital transformation and measurable revenue growth.
+          </p>
+        </div>
+
+        <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Populated dynamically by JS with all 8 required services -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. FEATURED PRODUCTS + INTERACTIVE PRODUCT DEMO WORKSPACE             -->
+    <!-- ===================================================================== -->
+    <section id="products" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-electric-400">Flagship Platforms</span>
+            <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+              Featured Products
+            </h2>
+            <p class="mt-3 text-slate-300 max-w-2xl">
+              Proprietary software accelerators built by INNOVATE X. Filter by category, launch live interactive demos, or inspect architecture specs.
+            </p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div id="product-filters" class="flex flex-wrap gap-2">
+            <button data-filter="all" class="product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-electric-500 text-white transition">All Products</button>
+            <button data-filter="ai" class="product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">AI & Automation</button>
+            <button data-filter="cloud" class="product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">Cloud & Analytics</button>
+            <button data-filter="security" class="product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">Security & Ops</button>
+          </div>
+        </div>
+
+        <!-- Featured Product Cards Grid -->
+        <div id="featured-products-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- 9D. INTERACTIVE PRODUCT DEMO (Switchable Simulated SaaS Workspace) -->
+        <div id="interactive-demo" class="glass-panel rounded-3xl p-6 sm:p-8 border border-electric-400/25">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+            <div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-electric-400">
+                <span class="w-2 h-2 rounded-full bg-electric-400"></span>
+                Interactive Sandbox Demo
+              </span>
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1">
+                Live Product Workspace Preview
+              </h3>
+            </div>
+
+            <!-- Workspace Switcher Tabs -->
+            <div class="flex flex-wrap gap-2" id="demo-workspace-tabs">
+              <button data-workspace="neuralpulse" class="demo-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-electric-500 to-violetx-600 text-white shadow">
+                NeuralPulse AI Copilot
+              </button>
+              <button data-workspace="cloudscale" class="demo-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10">
+                CloudScale Telemetry
+              </button>
+              <button data-workspace="shieldmesh" class="demo-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10">
+                ShieldMesh Sentinel
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulated App Window -->
+          <div class="rounded-2xl bg-navy-950/90 border border-white/10 overflow-hidden">
+            <!-- Window Top Bar -->
+            <div class="px-4 py-3 bg-navy-900 border-b border-white/10 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+                <span id="demo-window-title" class="ml-2 text-xs font-mono text-slate-300">innovatex.cloud/app/neuralpulse-v4</span>
+              </div>
+              <button id="demo-run-sim-btn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-electric-500/20 hover:bg-electric-500/30 border border-electric-400/40 text-electric-300 transition">
+                ▶ Run Live Simulation
+              </button>
+            </div>
+
+            <!-- Window Body -->
+            <div id="demo-workspace-body" class="p-5 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. OUR TEAM MEMBERS                                                   -->
+    <!-- ===================================================================== -->
+    <section id="team" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-violetx-400">Leadership & Builders</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Meet Our Team Members
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Architects, researchers, designers, and growth strategists united by a shared obsession with craft and impact.
+          </p>
+        </div>
+
+        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. ACHIEVEMENTS & STATISTICS + 9E. STARTUP GROWTH DASHBOARD         -->
+    <!-- ===================================================================== -->
+    <section id="stats" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-electric-400">Proven Impact</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Achievements & Growth Telemetry
+          </h2>
+        </div>
+
+        <!-- Animated Counters Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 mb-10">
+          <div class="glass-card rounded-2xl p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-electric-400 counter-num" data-target="340" data-suffix="+">0</div>
+            <div class="mt-1.5 text-xs sm:text-sm font-medium text-slate-300">Projects Completed</div>
+            <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full text-[11px] bg-electric-500/15 text-electric-300 border border-electric-400/25">99.2% On-Time</span>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-violetx-400 counter-num" data-target="185" data-suffix="+">0</div>
+            <div class="mt-1.5 text-xs sm:text-sm font-medium text-slate-300">Happy Clients</div>
+            <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full text-[11px] bg-violetx-500/15 text-violetx-300 border border-violetx-400/25">4.9/5 CSAT</span>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-emerald-400 counter-num" data-target="85" data-suffix="+">0</div>
+            <div class="mt-1.5 text-xs sm:text-sm font-medium text-slate-300">Team Members</div>
+            <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/25">Global Talent</span>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 text-center">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-sky-300 counter-num" data-target="5" data-suffix="+">0</div>
+            <div class="mt-1.5 text-xs sm:text-sm font-medium text-slate-300">Years of Experience</div>
+            <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full text-[11px] bg-sky-500/15 text-sky-300 border border-sky-400/25">Est. 2021</span>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 text-center col-span-2 sm:col-span-1">
+            <div class="font-display text-3xl sm:text-4xl font-bold text-amber-400 counter-num" data-target="28" data-suffix="">0</div>
+            <div class="mt-1.5 text-xs sm:text-sm font-medium text-slate-300">Industry Awards</div>
+            <span class="mt-3 inline-block px-2.5 py-0.5 rounded-full text-[11px] bg-amber-500/15 text-amber-300 border border-amber-400/25">AI & Design</span>
+          </div>
+        </div>
+
+        <!-- 9E. STARTUP GROWTH DASHBOARD (Canvas Charts) -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/15">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-violetx-400">Business Intelligence</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-1">Startup Growth Dashboard</h3>
+              <p class="text-xs sm:text-sm text-slate-400">Monthly performance, revenue growth, completed projects, and customer satisfaction.</p>
+            </div>
+
+            <div class="flex items-center gap-2" id="dashboard-period-controls">
+              <button data-period="6m" class="dash-period-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-electric-500 text-white transition">Last 6 Months</button>
+              <button data-period="12m" class="dash-period-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">Full 12 Months</button>
+            </div>
+          </div>
+
+          <!-- KPI Summary Strip -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="p-4 rounded-xl bg-navy-900/75 border border-white/10">
+              <div class="text-xs text-slate-400">Revenue Index ($K)</div>
+              <div id="dash-kpi-rev" class="font-display text-2xl font-bold text-electric-400 mt-1">$840K</div>
+            </div>
+            <div class="p-4 rounded-xl bg-navy-900/75 border border-white/10">
+              <div class="text-xs text-slate-400">Projects Shipped</div>
+              <div id="dash-kpi-proj" class="font-display text-2xl font-bold text-violetx-400 mt-1">164</div>
+            </div>
+            <div class="p-4 rounded-xl bg-navy-900/75 border border-white/10">
+              <div class="text-xs text-slate-400">Customer Satisfaction</div>
+              <div id="dash-kpi-csat" class="font-display text-2xl font-bold text-emerald-400 mt-1">98.4%</div>
+            </div>
+            <div class="p-4 rounded-xl bg-navy-900/75 border border-white/10">
+              <div class="text-xs text-slate-400">MoM Growth Rate</div>
+              <div id="dash-kpi-mom" class="font-display text-2xl font-bold text-amber-300 mt-1">+19.6%</div>
+            </div>
+          </div>
+
+          <!-- Two Responsive Canvas Charts -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="p-4 rounded-2xl bg-navy-950/80 border border-white/10">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-display text-sm font-bold text-white">Monthly Revenue & Projects Completed</h4>
+                <div class="flex items-center gap-3 text-[11px]">
+                  <span class="flex items-center gap-1 text-electric-400"><span class="w-2.5 h-2.5 rounded-sm bg-electric-400"></span>Revenue ($K)</span>
+                  <span class="flex items-center gap-1 text-violetx-400"><span class="w-2.5 h-2.5 rounded-sm bg-violetx-400"></span>Projects</span>
+                </div>
+              </div>
+              <div class="w-full h-60">
+                <canvas id="growth-bar-canvas"></canvas>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-navy-950/80 border border-white/10">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-display text-sm font-bold text-white">Customer Satisfaction & Retention Trend (%)</h4>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300">CSAT Score</span>
+              </div>
+              <div class="w-full h-60">
+                <canvas id="csat-line-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 8. CUSTOMER TESTIMONIALS (Auto Carousel + Submit Your Review)         -->
+    <!-- ===================================================================== -->
+    <section id="testimonials" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-electric-400">Client Voices</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Trusted by Forward-Thinking Teams
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Auto-Rotating Testimonial Carousel -->
+          <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8">
+            <div class="flex items-center justify-between gap-2 mb-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-violetx-400">Featured Reviews</span>
+              <div class="flex items-center gap-2">
+                <button id="prev-testimonial-btn" type="button" aria-label="Previous Testimonial" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button id="toggle-carousel-btn" type="button" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition">
+                  Pause Auto
+                </button>
+                <button id="next-testimonial-btn" type="button" aria-label="Next Testimonial" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="testimonial-active-card" class="p-6 rounded-2xl bg-navy-900/80 border border-white/10 min-h-[230px] flex flex-col justify-between transition-all">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Dots -->
+            <div id="testimonial-dots" class="flex items-center justify-center gap-2 mt-5"></div>
+          </div>
+
+          <!-- Submit Your Review Form -->
+          <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8">
+            <h3 class="font-display text-xl font-bold text-white mb-1">Submit Your Review</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-5">Worked with INNOVATE X? Share your experience with the community.</p>
+
+            <form id="review-form" class="space-y-4" novalidate>
+              <div>
+                <label for="rev-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Name *</label>
+                <input id="rev-name" type="text" required placeholder="e.g., Elena Rostova" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/80 border border-white/15 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="rev-company" class="block text-xs font-semibold text-slate-300 mb-1.5">Company & Role *</label>
+                  <input id="rev-company" type="text" required placeholder="VP Product, FinPulse" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/80 border border-white/15 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric-400" />
+                </div>
+                <div>
+                  <label for="rev-rating" class="block text-xs font-semibold text-slate-300 mb-1.5">Rating *</label>
+                  <select id="rev-rating" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/80 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400">
+                    <option value="5">★★★★★ (5.0)</option>
+                    <option value="4">★★★★☆ (4.0)</option>
+                    <option value="3">★★★☆☆ (3.0)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="rev-quote" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Feedback *</label>
+                <textarea id="rev-quote" rows="3" required placeholder="Tell us about the solution, velocity, or results..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/80 border border-white/15 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric-400"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl font-semibold text-sm text-white btn-primary-glow">
+                Publish Review
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 9. SPECIAL AI-POWERED FEATURES SUITE (B, C, F, G + Floating A Chat)  -->
+    <!-- ===================================================================== -->
+    <section id="ai-suite" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-violetx-400">Intelligent Tools</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            AI-Powered Planning & Booking Suite
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Estimate project budgets transparently, match business challenges to optimal tech solutions, and book strategy sessions in seconds.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+
+          <!-- 9B. SMART PROJECT COST ESTIMATOR -->
+          <div id="ai-estimator" class="glass-panel rounded-3xl p-6 sm:p-8 border border-electric-400/20">
+            <div class="flex items-center justify-between gap-2 mb-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-electric-400">Smart Estimator</span>
+                <h3 class="font-display text-2xl font-bold text-white mt-0.5">Project Cost Estimator</h3>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-electric-500/15 text-electric-300">Instant Quote</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label for="est-type" class="block text-xs font-semibold text-slate-300 mb-1.5">1. Select Project Type</label>
+                <select id="est-type" class="est-input w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400">
+                  <option value="18000" data-weeks="5">AI Agent & Automation System ($18,000 base)</option>
+                  <option value="14000" data-weeks="4">Web Application Platform ($14,000 base)</option>
+                  <option value="16000" data-weeks="6">iOS & Android Mobile App ($16,000 base)</option>
+                  <option value="15000" data-weeks="4">Cloud Architecture & Data Analytics ($15,000 base)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">2. Complexity Tier</label>
+                <div class="grid grid-cols-3 gap-2.5" id="est-complexity-group">
+                  <button type="button" data-mult="1.0" class="est-comp-btn py-2 px-3 rounded-xl text-xs font-semibold bg-electric-500 text-white transition">Starter (1.0x)</button>
+                  <button type="button" data-mult="1.35" class="est-comp-btn py-2 px-3 rounded-xl text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">Growth (1.35x)</button>
+                  <button type="button" data-mult="1.75" class="est-comp-btn py-2 px-3 rounded-xl text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition">Enterprise (1.75x)</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-2">3. Required Features & Modules</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                  <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-navy-900/75 border border-white/10 cursor-pointer hover:border-electric-400/40">
+                    <input type="checkbox" value="4500" data-weeks="1" class="est-feat rounded accent-sky-400" checked />
+                    <span>Custom LLM / RAG Pipeline (+$4.5k)</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-navy-900/75 border border-white/10 cursor-pointer hover:border-electric-400/40">
+                    <input type="checkbox" value="3200" data-weeks="1" class="est-feat rounded accent-sky-400" checked />
+                    <span>Analytics & BI Dashboard (+$3.2k)</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-navy-900/75 border border-white/10 cursor-pointer hover:border-electric-400/40">
+                    <input type="checkbox" value="3800" data-weeks="1" class="est-feat rounded accent-sky-400" />
+                    <span>SSO, RBAC & Audit Security (+$3.8k)</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-navy-900/75 border border-white/10 cursor-pointer hover:border-electric-400/40">
+                    <input type="checkbox" value="2800" data-weeks="1" class="est-feat rounded accent-sky-400" />
+                    <span>Payment & Billing Engine (+$2.8k)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Live Estimate Output -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-electric-500/15 via-indigo-500/15 to-violetx-500/15 border border-electric-400/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <div class="text-xs text-slate-300">Estimated Investment</div>
+                  <div id="est-total-price" class="font-display text-3xl font-bold text-white mt-0.5">$25,700</div>
+                  <div id="est-timeline" class="text-xs text-electric-300 mt-1">Est. Delivery: ~7 Weeks</div>
+                </div>
+                <a href="#booking" id="est-apply-booking" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-white btn-primary-glow text-center shrink-0">
+                  Lock Estimate & Book Call
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9C. AI SOLUTION FINDER -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-violetx-400/20">
+            <div class="flex items-center justify-between gap-2 mb-5">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-violetx-400">Solution Matcher</span>
+                <h3 class="font-display text-2xl font-bold text-white mt-0.5">AI Solution Finder</h3>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-violetx-500/15 text-violetx-300">Smart Match</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label for="finder-challenge" class="block text-xs font-semibold text-slate-300 mb-1.5">Primary Business Challenge</label>
+                <select id="finder-challenge" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-violetx-400">
+                  <option value="automation">Manual support & repetitive operational workflows</option>
+                  <option value="scale">Slow legacy web/mobile app or high cloud bills</option>
+                  <option value="insights">Fragmented data & lack of real-time forecasting</option>
+                  <option value="growth">Low conversion rates, clunky UX, or security risks</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="finder-notes" class="block text-xs font-semibold text-slate-300 mb-1.5">Describe Your Context (Optional)</label>
+                <input id="finder-notes" type="text" placeholder="e.g., B2B SaaS scaling to 50k users, need AI triage..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-violetx-400" />
+              </div>
+
+              <button id="finder-recommend-btn" type="button" class="w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violetx-600 to-electric-500 hover:brightness-110 transition">
+                Generate Recommended Stack
+              </button>
+
+              <div id="finder-result" class="p-4 sm:p-5 rounded-2xl bg-navy-900/80 border border-white/10 space-y-2.5">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9F. SMART APPOINTMENT BOOKING & 9G. NEWSLETTER -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Smart Appointment Booking -->
+          <div id="booking" class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8">
+            <div class="mb-5">
+              <span class="text-xs font-bold uppercase tracking-wider text-electric-400">Schedule Strategy Session</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-0.5">Smart Appointment Booking</h3>
+            </div>
+
+            <form id="booking-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4" novalidate>
+              <div>
+                <label for="book-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Full Name *</label>
+                <input id="book-name" type="text" required placeholder="Alex Morgan" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="book-email" class="block text-xs font-semibold text-slate-300 mb-1.5">Work Email *</label>
+                <input id="book-email" type="email" required placeholder="alex@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="book-date" class="block text-xs font-semibold text-slate-300 mb-1.5">Preferred Date *</label>
+                <input id="book-date" type="date" required class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="book-time" class="block text-xs font-semibold text-slate-300 mb-1.5">Time Slot (UTC/Local) *</label>
+                <select id="book-time" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400">
+                  <option value="09:30 AM">09:30 AM</option>
+                  <option value="11:30 AM">11:30 AM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="04:30 PM">04:30 PM</option>
+                  <option value="06:00 PM">06:00 PM</option>
+                </select>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label for="book-type" class="block text-xs font-semibold text-slate-300 mb-1.5">Meeting Type</label>
+                <select id="book-type" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400">
+                  <option value="AI & Architecture Discovery Call">AI & Architecture Discovery Call (30 min)</option>
+                  <option value="Product Demo & Roadmap Walkthrough">Product Demo & Roadmap Walkthrough (45 min)</option>
+                  <option value="Project Scope & Cost Estimation Review">Project Scope & Cost Estimation Review (30 min)</option>
+                </select>
+              </div>
+
+              <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                <button type="submit" class="px-6 py-3 rounded-xl text-sm font-semibold text-white btn-primary-glow">
+                  Confirm Appointment
+                </button>
+                <span class="text-xs text-slate-400">Instant calendar invite & meeting link generated.</span>
+              </div>
+            </form>
+
+            <div id="booking-confirmation" class="hidden mt-4 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-400/30 text-xs sm:text-sm text-emerald-200"></div>
+          </div>
+
+          <!-- 9G. NEWSLETTER & UPDATES -->
+          <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-navy-900/80 to-violetx-950/40">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-violetx-400">Dispatch & Releases</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-1">Newsletter & Updates</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Get monthly insights on generative AI engineering, product launches, architecture blueprints, and founder offers.
+              </p>
+            </div>
+
+            <form id="newsletter-form" class="mt-6 space-y-3" novalidate>
+              <div>
+                <label for="news-email" class="sr-only">Email Address</label>
+                <input id="news-email" type="email" required placeholder="you@organization.com" class="w-full px-4 py-3 rounded-xl bg-navy-950/90 border border-white/15 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-violetx-400" />
+              </div>
+              <button type="submit" class="w-full py-3 rounded-xl text-sm font-semibold bg-white text-navy-950 hover:bg-electric-400 transition">
+                Subscribe to Updates
+              </button>
+              <p id="newsletter-msg" class="text-xs text-slate-400 min-h-[1rem]"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 10. CAREERS SECTION (Open Roles, Culture/Benefits, Apply + Resume)    -->
+    <!-- ===================================================================== -->
+    <section id="careers" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-electric-400">Join INNOVATE X</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Careers & Open Positions
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Build high-impact AI products and cloud platforms alongside curious builders in a high-autonomy culture.
+          </p>
+        </div>
+
+        <!-- Culture & Benefits Strip -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div class="p-4 rounded-2xl glass-card">
+            <div class="text-sm font-bold text-electric-400">🌐 Remote-First & Hybrid</div>
+            <p class="text-xs text-slate-300 mt-1">Flexible hours with quarterly innovation sprints.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-card">
+            <div class="text-sm font-bold text-violetx-400">💻 Workstation & AI Stipend</div>
+            <p class="text-xs text-slate-300 mt-1">$2,500 hardware setup + full LLM/cloud sandbox access.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-card">
+            <div class="text-sm font-bold text-emerald-400">📈 Equity & Growth Bonus</div>
+            <p class="text-xs text-slate-300 mt-1">Competitive compensation plus performance ownership.</p>
+          </div>
+          <div class="p-4 rounded-2xl glass-card">
+            <div class="text-sm font-bold text-amber-300">🎓 Learning & Conferences</div>
+            <p class="text-xs text-slate-300 mt-1">Annual budget for courses, certifications & summits.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Job Listings -->
+          <div id="jobs-list" class="lg:col-span-7 space-y-4">
+            <!-- Populated dynamically by JS -->
+          </div>
+
+          <!-- Application & Resume Upload Form -->
+          <div id="career-apply-box" class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-violetx-400/25">
+            <h3 class="font-display text-xl font-bold text-white mb-1">Apply Now</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-5">Submit your details and resume (PDF, DOC, DOCX, or TXT).</p>
+
+            <form id="career-form" class="space-y-4" novalidate>
+              <div>
+                <label for="app-role" class="block text-xs font-semibold text-slate-300 mb-1.5">Position *</label>
+                <select id="app-role" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400">
+                  <option value="Senior AI & LLM Engineer">Senior AI & LLM Engineer</option>
+                  <option value="Full-Stack Product Engineer (React/Node)">Full-Stack Product Engineer (React/Node)</option>
+                  <option value="Senior UI/UX & Design Systems Designer">Senior UI/UX & Design Systems Designer</option>
+                  <option value="Cloud Security & DevOps Architect">Cloud Security & DevOps Architect</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="app-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Full Name *</label>
+                <input id="app-name" type="text" required placeholder="Jordan Rivera" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="app-email" class="block text-xs font-semibold text-slate-300 mb-1.5">Email Address *</label>
+                <input id="app-email" type="email" required placeholder="jordan@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="app-resume" class="block text-xs font-semibold text-slate-300 mb-1.5">Upload Resume *</label>
+                <input id="app-resume" type="file" accept=".pdf,.doc,.docx,.txt" class="w-full text-xs text-slate-300 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-electric-500/20 file:text-electric-300 hover:file:bg-electric-500/30 bg-navy-950/85 border border-white/15 rounded-xl p-1.5 cursor-pointer" />
+                <p id="resume-file-info" class="text-[11px] text-slate-400 mt-1"></p>
+              </div>
+
+              <div>
+                <label for="app-note" class="block text-xs font-semibold text-slate-300 mb-1.5">Portfolio / GitHub / Summary</label>
+                <textarea id="app-note" rows="2" placeholder="Link to portfolio or brief note..." class="w-full px-3.5 py-2 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl text-sm font-semibold text-white btn-primary-glow">
+                Submit Application
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 12. CUSTOMER PORTAL (Profile, Projects, Support, Meetings, Notifs)    -->
+    <!-- ===================================================================== -->
+    <section id="portal" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-violetx-400">Client Workspace</span>
+            <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+              Customer Portal
+            </h2>
+            <p class="mt-2 text-slate-300 text-sm sm:text-base">
+              Track active deliverables, project progress, support tickets, scheduled calls, notifications, and account preferences.
+            </p>
+          </div>
+
+          <!-- Portal Tab Switcher -->
+          <div id="portal-tabs" class="flex flex-wrap gap-1.5 bg-navy-900/90 p-1.5 rounded-2xl border border-white/10">
+            <button data-ptab="projects" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-electric-500 text-white transition">Projects</button>
+            <button data-ptab="profile" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition">Profile</button>
+            <button data-ptab="support" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition">Support</button>
+            <button data-ptab="meetings" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition">Meetings</button>
+            <button data-ptab="notifications" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition">Notifications</button>
+            <button data-ptab="settings" class="portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition">Settings</button>
+          </div>
+        </div>
+
+        <div id="portal-content" class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/15 min-h-[340px]">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 11. CONTACT US SECTION (Form, Email/Phone, WhatsApp, Socials, Map)   -->
+    <!-- ===================================================================== -->
+    <section id="contact" class="py-20 lg:py-28 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-bold uppercase tracking-widest text-electric-400">Get In Touch</span>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            Contact INNOVATE X
+          </h2>
+          <p class="mt-4 text-slate-300 text-base sm:text-lg">
+            Have a product vision, enterprise RFP, or partnership inquiry? Reach out directly.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Validated Contact Form -->
+          <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8">
+            <h3 class="font-display text-2xl font-bold text-white mb-5">Send a Message</h3>
+            <form id="contact-form" class="space-y-4" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="cnt-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Your Name *</label>
+                  <input id="cnt-name" type="text" required placeholder="Maya Lin" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+                </div>
+                <div>
+                  <label for="cnt-email" class="block text-xs font-semibold text-slate-300 mb-1.5">Email Address *</label>
+                  <input id="cnt-email" type="email" required placeholder="maya@startup.io" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+                </div>
+              </div>
+
+              <div>
+                <label for="cnt-subject" class="block text-xs font-semibold text-slate-300 mb-1.5">Subject *</label>
+                <input id="cnt-subject" type="text" required placeholder="Custom AI Platform & Cloud Migration" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              </div>
+
+              <div>
+                <label for="cnt-message" class="block text-xs font-semibold text-slate-300 mb-1.5">Message *</label>
+                <textarea id="cnt-message" rows="4" required placeholder="Share your goals, timeline, and any technical details..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-950/85 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400"></textarea>
+              </div>
+
+              <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl text-sm font-semibold text-white btn-primary-glow">
+                Send Inquiry
+              </button>
+            </form>
+          </div>
+
+          <!-- Direct Contact Info, WhatsApp & Interactive Office Map -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass-panel rounded-3xl p-6 space-y-4">
+              <h3 class="font-display text-xl font-bold text-white">Direct Channels</h3>
+
+              <div class="text-sm space-y-2.5 text-slate-300">
+                <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                  <span class="text-slate-400">Email</span>
+                  <a href="mailto:hello@innovatex.io" class="font-medium text-electric-400 hover:underline">hello@innovatex.io</a>
+                </div>
+                <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+                  <span class="text-slate-400">Phone</span>
+                  <a href="tel:+14158904321" class="font-medium text-white hover:text-electric-400">+1 (415) 890-4321</a>
+                </div>
+                <div class="flex items-center justify-between py-1.5">
+                  <span class="text-slate-400">HQ Address</span>
+                  <span class="font-medium text-white text-right">548 Market St, Suite 420, San Francisco</span>
+                </div>
+              </div>
+
+              <div class="pt-2 flex flex-wrap items-center gap-2.5">
+                <a href="https://wa.me/14158904321?text=Hello%20INNOVATE%20X%20Team%2C%20I%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 transition">
+                  <span>💬 WhatsApp Support</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 transition">LinkedIn</a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 transition">X / Twitter</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 transition">GitHub</a>
+              </div>
+            </div>
+
+            <!-- Office Location Interactive Map Embed -->
+            <div class="glass-panel rounded-3xl overflow-hidden border border-white/15">
+              <div class="px-4 py-3 bg-navy-900/90 border-b border-white/10 flex items-center justify-between text-xs">
+                <span class="font-semibold text-white">📍 INNOVATE X Innovation Hub</span>
+                <a href="https://maps.google.com/?q=548+Market+St+San+Francisco" target="_blank" rel="noopener noreferrer" class="text-electric-400 hover:underline">Open in Google Maps ↗</a>
+              </div>
+              <div class="h-48 w-full bg-navy-900 relative">
+                <iframe
+                  title="INNOVATE X Office Location Map"
+                  class="w-full h-full border-0 opacity-90"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-122.4065%2C37.7875%2C-122.3965%2C37.7935&layer=mapnik&marker=37.7905%2C-122.4015">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 13. COMPREHENSIVE FOOTER                                              -->
+  <!-- ===================================================================== -->
+  <footer class="relative z-10 border-t border-white/10 bg-navy-950/95 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <!-- Brand Column -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-electric-500 to-violetx-600 flex items-center justify-center font-display font-bold text-white">
+              X
+            </div>
+            <div>
+              <div class="font-display font-bold text-base text-white">INNOVATE X</div>
+              <div class="text-xs text-slate-400">Future Starts Here</div>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Turning innovative ideas into reality with intelligent AI solutions, resilient cloud systems, and high-craft digital products.
+          </p>
+          <div class="text-xs text-slate-400 space-y-1">
+            <div>✉️ hello@innovatex.io</div>
+            <div>📞 +1 (415) 890-4321</div>
+          </div>
+        </div>
+
+        <!-- Links Column 1 -->
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#about" class="hover:text-electric-400 transition">About Us</a></li>
+            <li><a href="#team" class="hover:text-electric-400 transition">Our Team</a></li>
+            <li><a href="#careers" class="hover:text-electric-400 transition">Careers</a></li>
+            <li><a href="#contact" class="hover:text-electric-400 transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider">Solutions</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#services" class="hover:text-electric-400 transition">Services (8 Practices)</a></li>
+            <li><a href="#products" class="hover:text-electric-400 transition">Featured Products</a></li>
+            <li><a href="#ai-estimator" class="hover:text-electric-400 transition">Cost Estimator & AI Finder</a></li>
+            <li><a href="#portal" class="hover:text-electric-400 transition">Customer Portal</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3 (Legal & Social) -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-display text-sm font-bold text-white uppercase tracking-wider">Legal & Social</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><button type="button" data-legal="privacy" class="legal-modal-btn hover:text-electric-400 transition">Privacy Policy</button></li>
+            <li><button type="button" data-legal="terms" class="legal-modal-btn hover:text-electric-400 transition">Terms and Conditions</button></li>
+            <li class="pt-1 flex items-center gap-3 text-xs">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300">LinkedIn</a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300">X</a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300">GitHub</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div>© <span id="copyright-year">2026</span> INNOVATE X – Future Starts Here. All rights reserved.</div>
+        <div class="flex items-center gap-4">
+          <button type="button" data-legal="privacy" class="legal-modal-btn hover:text-slate-300">Privacy Policy</button>
+          <button type="button" data-legal="terms" class="legal-modal-btn hover:text-slate-300">Terms & Conditions</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- 9A. FLOATING AI BUSINESS ASSISTANT CHAT WIDGET                        -->
+  <!-- ===================================================================== -->
+  <div id="ai-chat-widget" class="fixed bottom-5 right-5 z-[80]">
+    <!-- Chat Panel -->
+    <div id="ai-chat-panel" class="hidden w-[calc(100vw-2.5rem)] sm:w-96 rounded-3xl glass-panel border border-electric-400/35 overflow-hidden mb-3 shadow-2xl">
+      <div class="px-4 py-3.5 bg-gradient-to-r from-electric-600/30 to-violetx-600/30 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-electric-500 to-violetx-600 flex items-center justify-center text-xs font-bold text-white">AI</div>
+          <div>
+            <div class="text-sm font-bold text-white">INNOVATE X Assistant</div>
+            <div class="text-[11px] text-emerald-300 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online • Products, Pricing & Support
+            </div>
+          </div>
+        </div>
+        <button id="ai-chat-close" type="button" aria-label="Close AI Assistant" class="p-1.5 rounded-lg hover:bg-white/10 text-slate-300">
+          ✕
+        </button>
+      </div>
+
+      <!-- Quick Prompt Chips -->
+      <div class="px-3.5 pt-3 pb-2 flex flex-wrap gap-1.5 border-b border-white/10 bg-navy-950/60">
+        <button type="button" class="ai-quick-prompt px-2.5 py-1 rounded-lg text-[11px] bg-white/5 hover:bg-electric-500/20 border border-white/10 text-slate-200 transition">Services & AI</button>
+        <button type="button" class="ai-quick-prompt px-2.5 py-1 rounded-lg text-[11px] bg-white/5 hover:bg-electric-500/20 border border-white/10 text-slate-200 transition">Pricing & Estimates</button>
+        <button type="button" class="ai-quick-prompt px-2.5 py-1 rounded-lg text-[11px] bg-white/5 hover:bg-electric-500/20 border border-white/10 text-slate-200 transition">Support & SLA</button>
+      </div>
+
+      <!-- Messages Container -->
+      <div id="ai-chat-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs sm:text-sm bg-navy-950/75">
+        <div class="p-3 rounded-2xl rounded-tl-sm bg-navy-800/90 border border-white/10 text-slate-200 leading-relaxed">
+          Hi! I'm the <strong class="text-electric-400">INNOVATE X</strong> AI Business Assistant. Ask me about our 8 services, featured products, project pricing, or 24/7 support.
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <form id="ai-chat-form" class="p-3 bg-navy-900 border-t border-white/10 flex items-center gap-2">
+        <input id="ai-chat-input" type="text" placeholder="Ask about pricing, AI, cloud..." class="flex-1 px-3 py-2 rounded-xl bg-navy-950 border border-white/15 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-electric-400" />
+        <button type="submit" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-white btn-primary-glow shrink-0">
+          Send
+        </button>
+      </form>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <button id="ai-chat-toggle" type="button" class="ml-auto flex items-center gap-2.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-white btn-primary-glow">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+      <span>AI Assistant</span>
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- REUSABLE MODAL (Service Details, Product Details, Legal Docs)         -->
+  <!-- ===================================================================== -->
+  <div id="info-modal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="glass-panel rounded-3xl max-w-xl w-full p-6 sm:p-7 border border-electric-400/30 relative max-h-[88vh] overflow-y-auto">
+      <button id="info-modal-close" type="button" aria-label="Close Modal" class="absolute top-4 right-4 w-8 h-8 rounded-xl bg-white/5 hover:bg-white/15 text-slate-300 flex items-center justify-center">
+        ✕
+      </button>
+      <div id="info-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION JAVASCRIPT (State, Rendering, Charts, AI, Forms, Modals)  -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // -------------------------------------------------------------------
+      // 1. MULTI-LANGUAGE TRANSLATIONS (EN, ES, FR, HI)
+      // -------------------------------------------------------------------
+      const translations = {
+        en: {
+          tagline: 'Future Starts Here',
+          nav_about: 'About',
+          nav_services: 'Services',
+          nav_products: 'Products',
+          nav_team: 'Team',
+          nav_ai: 'AI Suite',
+          nav_careers: 'Careers',
+          nav_portal: 'Portal',
+          nav_contact: 'Contact',
+          btn_portal: 'Portal',
+          hero_badge: 'INNOVATE X – Future Starts Here • Next-Gen AI & Software',
+          hero_title: 'Turning Innovative Ideas Into Reality.',
+          hero_subtitle: 'We empower businesses with intelligent technology and creative digital solutions.',
+          hero_cta_primary: 'Explore Our Solutions',
+          hero_cta_secondary: 'Get Started',
+          live_bar_title: 'Live Startup Growth Telemetry',
+        },
+        es: {
+          tagline: 'El Futuro Comienza Aquí',
+          nav_about: 'Nosotros',
+          nav_services: 'Servicios',
+          nav_products: 'Productos',
+          nav_team: 'Equipo',
+          nav_ai: 'Suite IA',
+          nav_careers: 'Carreras',
+          nav_portal: 'Portal',
+          nav_contact: 'Contacto',
+          btn_portal: 'Portal',
+          hero_badge: 'INNOVATE X – El Futuro Comienza Aquí • IA y Software',
+          hero_title: 'Transformando Ideas Innovadoras en Realidad.',
+          hero_subtitle: 'Impulsamos empresas con tecnología inteligente y soluciones digitales creativas.',
+          hero_cta_primary: 'Explorar Soluciones',
+          hero_cta_secondary: 'Comenzar',
+          live_bar_title: 'Telemetría de Crecimiento en Vivo',
+        },
+        fr: {
+          tagline: 'Le Futur Commence Ici',
+          nav_about: 'À Propos',
+          nav_services: 'Services',
+          nav_products: 'Produits',
+          nav_team: 'Équipe',
+          nav_ai: 'Suite IA',
+          nav_careers: 'Carrières',
+          nav_portal: 'Portail',
+          nav_contact: 'Contact',
+          btn_portal: 'Portail',
+          hero_badge: 'INNOVATE X – Le Futur Commence Ici • IA & Logiciels',
+          hero_title: 'Transformer les Idées Innovantes en Réalité.',
+          hero_subtitle: 'Nous donnons aux entreprises une technologie intelligente et des solutions numériques créatives.',
+          hero_cta_primary: 'Découvrir nos Solutions',
+          hero_cta_secondary: 'Commencer',
+          live_bar_title: 'Télémétrie de Croissance en Direct',
+        },
+        hi: {
+          tagline: 'भविष्य यहाँ से शुरू होता है',
+          nav_about: 'परिचय',
+          nav_services: 'सेवाएं',
+          nav_products: 'उत्पाद',
+          nav_team: 'टीम',
+          nav_ai: 'AI सूट',
+          nav_careers: 'करियर',
+          nav_portal: 'पोर्टल',
+          nav_contact: 'संपर्क',
+          btn_portal: 'पोर्टल',
+          hero_badge: 'INNOVATE X – भविष्य यहाँ से शुरू होता है • AI और सॉफ़्टवेयर',
+          hero_title: 'नवाचारी विचारों को हकीकत में बदलना।',
+          hero_subtitle: 'हम बुद्धिमान तकनीक और रचनात्मक डिजिटल समाधानों से व्यवसायों को सशक्त बनाते हैं।',
+          hero_cta_primary: 'समाधान देखें',
+          hero_cta_secondary: 'शुरू करें',
+          live_bar_title: 'लाइव स्टार्टअप ग्रोथ टेलीमेट्री',
+        },
+      };
+
+      function applyLanguage(lang) {
+        const dict = translations[lang] || translations.en;
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+      }
+
+      const langSelect = document.getElementById('lang-select');
+      if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+          applyLanguage(e.target.value);
+          showToast('Language switched to ' + e.target.value.toUpperCase(), 'info');
+        });
+      }
+
+      // -------------------------------------------------------------------
+      // 2. TOAST NOTIFICATION & MODAL HELPERS
+      // -------------------------------------------------------------------
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const colorMap = {
+          success: 'border-emerald-400/40 bg-navy-900/95 text-emerald-200',
+          info: 'border-electric-400/40 bg-navy-900/95 text-electric-200',
+          error: 'border-rose-400/40 bg-navy-900/95 text-rose-200',
+        };
+
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-xl text-xs sm:text-sm font-medium flex items-center justify-between gap-3 transition-all ${colorMap[type] || colorMap.info}`;
+        toast.innerHTML = `<span>${escapeHTML(message)}</span><button type="button" class="text-slate-400 hover:text-white text-xs">✕</button>`;
+
+        const closeBtn = toast.querySelector('button');
+        closeBtn.addEventListener('click', () => toast.remove());
+
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 250);
+        }, 3800);
+      }
+
+      function escapeHTML(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      const infoModal = document.getElementById('info-modal');
+      const infoModalBody = document.getElementById('info-modal-body');
+      const infoModalClose = document.getElementById('info-modal-close');
+
+      function openInfoModal(htmlContent) {
+        if (!infoModal || !infoModalBody) return;
+        infoModalBody.innerHTML = htmlContent;
+        infoModal.classList.remove('hidden');
+        infoModal.classList.add('flex');
+      }
+
+      function closeInfoModal() {
+        if (!infoModal) return;
+        infoModal.classList.add('hidden');
+        infoModal.classList.remove('flex');
+      }
+
+      if (infoModalClose) infoModalClose.addEventListener('click', closeInfoModal);
+      if (infoModal) {
+        infoModal.addEventListener('click', (e) => {
+          if (e.target === infoModal) closeInfoModal();
+        });
+      }
+
+      // -------------------------------------------------------------------
+      // 3. MOBILE NAVIGATION & LIVE HERO TELEMETRY
+      // -------------------------------------------------------------------
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-open-icon');
+      const closeIcon = document.getElementById('menu-close-icon');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden', !isHidden);
+          openIcon?.classList.toggle('hidden', isHidden);
+          closeIcon?.classList.toggle('hidden', !isHidden);
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            openIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+          });
+        });
+      }
+
+      // Live Hero Telemetry Ticker & Clock
+      const clockEl = document.getElementById('live-clock');
+      const pipelinesEl = document.getElementById('live-pipelines');
+      const requestsEl = document.getElementById('live-requests');
+      let basePipelines = 1428;
+      let baseReq = 482.6;
+
+      function updateTelemetry() {
+        if (clockEl) {
+          clockEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+        basePipelines += Math.floor(Math.random() * 3) - 1;
+        baseReq = +(baseReq + (Math.random() * 2.4 - 1.0)).toFixed(1);
+        if (pipelinesEl) pipelinesEl.textContent = basePipelines.toLocaleString();
+        if (requestsEl) requestsEl.textContent = baseReq + 'K';
+      }
+      updateTelemetry();
+      setInterval(updateTelemetry, 2400);
+
+      // -------------------------------------------------------------------
+      // 4. ABOUT TIMELINE INTERACTIVITY
+      // -------------------------------------------------------------------
+      const timelineData = {
+        2021: {
+          title: '2021 • Founded in San Francisco',
+          desc: 'Started with a mission to simplify cloud-native engineering for emerging technology brands.',
+          metric: '8 Core Founders & Engineers • First 15 Clients',
+        },
+        2023: {
+          title: '2023 • AI Agents & CloudScale Launch',
+          desc: 'Released our proprietary orchestration engine for enterprise AI automation and multi-cloud telemetry.',
+          metric: '100+ Projects Shipped • Series A Milestone',
+        },
+        2025: {
+          title: '2025 • Global Expansion & Security Awards',
+          desc: 'Scaled to 85+ specialists across engineering, design, data science, and cybersecurity.',
+          metric: '28 Industry Honors • 98.7% Retention',
+        },
+        '2026+': {
+          title: '2026 & Beyond • Autonomous Enterprise Mesh',
+          desc: 'Pioneering domain-specialized AI copilots, instant cost-to-production pipelines, and next-gen UX.',
+          metric: '340+ Completed Projects • 185+ Happy Clients',
+        },
+      };
+
+      const timelineDetail = document.getElementById('timeline-detail');
+      function renderTimelineDetail(year) {
+        const item = timelineData[year] || timelineData['2021'];
+        if (!timelineDetail) return;
+        timelineDetail.innerHTML = `
+          <div class="text-sm font-bold text-white">${escapeHTML(item.title)}</div>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">${escapeHTML(item.desc)}</p>
+          <div class="mt-2.5 text-xs font-semibold text-electric-400">${escapeHTML(item.metric)}</div>
+        `;
+        document.querySelectorAll('.timeline-btn').forEach((btn) => {
+          const active = btn.dataset.year === String(year);
+          btn.className = active
+            ? 'timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-electric-500 text-white transition'
+            : 'timeline-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition';
+        });
+      }
+
+      document.querySelectorAll('.timeline-btn').forEach((btn) => {
+        btn.addEventListener('click', () => renderTimelineDetail(btn.dataset.year));
+      });
+      renderTimelineDetail('2021');
+
+      // -------------------------------------------------------------------
+      // 5. ALL 8 PRODUCTS & SERVICES DATA + RENDER + LEARN MORE MODAL
+      // -------------------------------------------------------------------
+      const servicesData = [
+        {
+          id: 'ai',
+          title: 'Artificial Intelligence Solutions',
+          badge: 'AI / LLM',
+          accent: 'text-electric-400',
+          desc: 'Custom LLM agents, RAG knowledge systems, computer vision, and predictive workflows tailored to your data.',
+          benefits: ['Automate up to 70% of repetitive tasks', 'Grounded answers with citation guardrails', 'Private & hybrid model deployment'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#38bdf8" stroke-opacity="0.35"/><circle cx="38" cy="35" r="11" stroke="#38bdf8" stroke-width="2"/><circle cx="82" cy="25" r="5" fill="#a78bfa"/><circle cx="82" cy="45" r="5" fill="#38bdf8"/><path d="M49 35h14M63 35l14-10M63 35l14 10" stroke="#94a3b8" stroke-width="1.5"/></svg>`,
+        },
+        {
+          id: 'web',
+          title: 'Web Application Development',
+          badge: 'Full-Stack',
+          accent: 'text-violetx-400',
+          desc: 'High-speed SaaS platforms, customer portals, and progressive web apps engineered for resilience and SEO.',
+          benefits: ['Sub-second interactive page transitions', 'Modular component & API architecture', 'Scalable multi-tenant readiness'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#a78bfa" stroke-opacity="0.35"/><rect x="18" y="18" width="84" height="8" rx="3" fill="#1e293b"/><rect x="18" y="31" width="38" height="21" rx="4" fill="#0ea5e9" fill-opacity="0.25"/><rect x="62" y="31" width="40" height="9" rx="3" fill="#8b5cf6" fill-opacity="0.3"/><rect x="62" y="43" width="28" height="9" rx="3" fill="#38bdf8" fill-opacity="0.25"/></svg>`,
+        },
+        {
+          id: 'mobile',
+          title: 'Mobile App Development',
+          badge: 'iOS & Android',
+          accent: 'text-sky-300',
+          desc: 'Fluid native and cross-platform mobile experiences with offline sync, push alerts, and biometric security.',
+          benefits: ['Unified codebase for iOS & Android', '60/120fps touch-first animations', 'App Store & Play Store launch support'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#38bdf8" stroke-opacity="0.35"/><rect x="44" y="14" width="32" height="42" rx="6" fill="#040814" stroke="#38bdf8" stroke-width="1.8"/><circle cx="60" cy="51" r="2" fill="#a78bfa"/><rect x="49" y="21" width="22" height="16" rx="2" fill="#8b5cf6" fill-opacity="0.3"/></svg>`,
+        },
+        {
+          id: 'cloud',
+          title: 'Cloud Computing',
+          badge: 'Cloud Native',
+          accent: 'text-emerald-400',
+          desc: 'Kubernetes clusters, serverless microservices, automated CI/CD, and FinOps cost optimization across major clouds.',
+          benefits: ['99.99% high-availability architecture', 'Automated auto-scaling & rollbacks', 'Up to 35% cloud spend reduction'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#34d399" stroke-opacity="0.35"/><path d="M40 46h40a11 11 0 0 0 2-21.8A15 15 0 0 0 53 18a14 14 0 0 0-13.7 11A9 9 0 0 0 40 46z" stroke="#34d399" stroke-width="2" fill="#10b981" fill-opacity="0.15"/></svg>`,
+        },
+        {
+          id: 'data',
+          title: 'Data Analytics',
+          badge: 'BI & Data',
+          accent: 'text-amber-300',
+          desc: 'Modern data warehouses, real-time streaming pipelines, and executive KPI dashboards that turn raw logs into clarity.',
+          benefits: ['Unified single source of truth', 'Real-time cohort & funnel visibility', 'Automated anomaly & churn alerts'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#fbbf24" stroke-opacity="0.35"/><rect x="28" y="38" width="10" height="14" rx="2" fill="#38bdf8"/><rect x="45" y="28" width="10" height="24" rx="2" fill="#a78bfa"/><rect x="62" y="22" width="10" height="30" rx="2" fill="#34d399"/><rect x="79" y="17" width="10" height="35" rx="2" fill="#fbbf24"/></svg>`,
+        },
+        {
+          id: 'ux',
+          title: 'UI/UX Design',
+          badge: 'Design Systems',
+          accent: 'text-fuchsia-300',
+          desc: 'User research, interactive prototyping, WCAG-conscious accessibility, and scalable Figma-to-code design systems.',
+          benefits: ['Higher onboarding & task completion', 'Consistent multi-product brand language', 'Validated via rapid usability testing'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#e879f9" stroke-opacity="0.35"/><circle cx="46" cy="35" r="13" stroke="#e879f9" stroke-width="2"/><rect x="65" y="23" width="26" height="24" rx="4" stroke="#38bdf8" stroke-width="2"/></svg>`,
+        },
+        {
+          id: 'security',
+          title: 'Cybersecurity Solutions',
+          badge: 'Zero Trust',
+          accent: 'text-rose-400',
+          desc: 'Threat modeling, vulnerability auditing, IAM hardening, API protection, and compliance readiness (SOC2 / ISO).',
+          benefits: ['Proactive threat detection & response', 'Encrypted data at rest & in transit', 'Audit-ready security controls'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#fb7185" stroke-opacity="0.35"/><path d="M60 16l16 6v12c0 10-7 17-16 20-9-3-16-10-16-20V22l16-6z" stroke="#fb7185" stroke-width="2" fill="#f43f5e" fill-opacity="0.15"/></svg>`,
+        },
+        {
+          id: 'marketing',
+          title: 'Digital Marketing',
+          badge: 'Growth Engine',
+          accent: 'text-cyan-300',
+          desc: 'Technical SEO, conversion rate optimization, growth analytics, and targeted acquisition campaigns powered by data.',
+          benefits: ['Qualified pipeline & lower CAC', 'Full-funnel attribution tracking', 'High-converting landing experiences'],
+          svg: `<svg viewBox="0 0 120 70" class="w-full h-16"><rect x="8" y="10" width="104" height="50" rx="10" fill="#0b1838" stroke="#22d3ee" stroke-opacity="0.35"/><path d="M24 46L48 30l14 9 28-21" stroke="#22d3ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="90" cy="18" r="4" fill="#a78bfa"/></svg>`,
+        },
+      ];
+
+      const servicesGrid = document.getElementById('services-grid');
+      if (servicesGrid) {
+        servicesGrid.innerHTML = servicesData.map((srv) => `
+          <article class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <div class="mb-4">${srv.svg}</div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 ${srv.accent}">${escapeHTML(srv.badge)}</span>
+              </div>
+              <h3 class="font-display text-lg font-bold text-white mb-2">${escapeHTML(srv.title)}</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">${escapeHTML(srv.desc)}</p>
+              <ul class="space-y-1.5 text-xs text-slate-300 mb-5">
+                ${srv.benefits.map((b) => `<li class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span><span>${escapeHTML(b)}</span></li>`).join('')}
+              </ul>
+            </div>
+            <button type="button" data-service-id="${srv.id}" class="learn-more-btn w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-white/5 hover:bg-electric-500/20 border border-white/15 hover:border-electric-400/50 text-white transition">
+              Learn More →
+            </button>
+          </article>
+        `).join('');
+
+        servicesGrid.querySelectorAll('.learn-more-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const srv = servicesData.find((s) => s.id === btn.dataset.serviceId);
+            if (!srv) return;
+            openInfoModal(`
+              <div class="mb-3">${srv.svg}</div>
+              <span class="text-xs font-bold uppercase tracking-wider ${srv.accent}">${escapeHTML(srv.badge)}</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-1">${escapeHTML(srv.title)}</h3>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">${escapeHTML(srv.desc)}</p>
+              <h4 class="font-display text-sm font-bold text-white mt-5 mb-2">Key Business Benefits</h4>
+              <ul class="space-y-2 text-sm text-slate-200">
+                ${srv.benefits.map((b) => `<li class="flex items-center gap-2"><span class="text-emerald-400">●</span>${escapeHTML(b)}</li>`).join('')}
+              </ul>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#ai-estimator" onclick="document.getElementById('info-modal').classList.add('hidden');document.getElementById('info-modal').classList.remove('flex');" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-white btn-primary-glow">Estimate Project Cost</a>
+                <a href="#booking" onclick="document.getElementById('info-modal').classList.add('hidden');document.getElementById('info-modal').classList.remove('flex');" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white">Book Consultation</a>
+              </div>
+            `);
+          });
+        });
+      }
+
+      // -------------------------------------------------------------------
+      // 6. FEATURED PRODUCTS + CATEGORY FILTER + INTERACTIVE DEMO SANDBOX
+      // -------------------------------------------------------------------
+      const productsData = [
+        {
+          id: 'neuralpulse',
+          category: 'ai',
+          tag: 'AI & Automation',
+          name: 'NeuralPulse AI Studio',
+          summary: 'Autonomous workflow copilot and knowledge retrieval engine for customer ops, engineering, and internal search.',
+          features: ['Multi-model LLM routing & vector search', 'Role-based guardrails & audit logs', 'One-click Slack, CRM & API webhooks'],
+          benefits: 'Cuts ticket resolution & research time by up to 62%.',
+          workspaceKey: 'neuralpulse',
+        },
+        {
+          id: 'cloudscale',
+          category: 'cloud',
+          tag: 'Cloud & Analytics',
+          name: 'CloudScale Telemetry',
+          summary: 'Real-time infrastructure observability, cost anomaly detection, and product analytics unified in one command layer.',
+          features: ['Live latency, error & throughput streams', 'Automated cloud spend optimization hints', 'Custom executive & cohort dashboards'],
+          benefits: 'Improves release confidence and trims cloud waste.',
+          workspaceKey: 'cloudscale',
+        },
+        {
+          id: 'shieldmesh',
+          category: 'security',
+          tag: 'Security & Ops',
+          name: 'ShieldMesh Sentinel',
+          summary: 'Continuous API posture monitoring, zero-trust policy checks, and automated incident response playbooks.',
+          features: ['Real-time threat & anomaly scoring', 'Automated compliance evidence collection', 'Instant webhook & SOC alert routing'],
+          benefits: 'Strengthens production resilience before incidents escalate.',
+          workspaceKey: 'shieldmesh',
+        },
+      ];
+
+      const productsGrid = document.getElementById('featured-products-grid');
+      let activeProductFilter = 'all';
+
+      function renderProducts() {
+        if (!productsGrid) return;
+        const filtered = activeProductFilter === 'all'
+          ? productsData
+          : productsData.filter((p) => p.category === activeProductFilter);
+
+        productsGrid.innerHTML = filtered.map((prod) => `
+          <article class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider bg-electric-500/15 border border-electric-400/30 text-electric-300">
+                  ${escapeHTML(prod.tag)}
+                </span>
+                <span class="text-[11px] font-mono text-emerald-400">v4.2 Ready</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">${escapeHTML(prod.name)}</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">${escapeHTML(prod.summary)}</p>
+
+              <div class="text-xs font-semibold text-white mb-1.5">Key Features:</div>
+              <ul class="space-y-1.5 text-xs text-slate-300 mb-4">
+                ${prod.features.map((f) => `<li class="flex items-center gap-1.5"><span class="text-violetx-400">▸</span>${escapeHTML(f)}</li>`).join('')}
+              </ul>
+              <p class="text-xs text-emerald-300 bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-2.5 mb-5">
+                <strong>Benefit:</strong> ${escapeHTML(prod.benefits)}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <button type="button" data-demo-key="${prod.workspaceKey}" class="launch-demo-btn py-2.5 px-3 rounded-xl text-xs font-semibold text-white btn-primary-glow">
+                ▶ Demo
+              </button>
+              <button type="button" data-prod-id="${prod.id}" class="explore-prod-btn py-2.5 px-3 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-white transition">
+                Explore Product
+              </button>
+            </div>
+          </article>
+        `).join('');
+
+        productsGrid.querySelectorAll('.launch-demo-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            switchDemoWorkspace(btn.dataset.demoKey, true);
+            document.getElementById('interactive-demo')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        });
+
+        productsGrid.querySelectorAll('.explore-prod-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const prod = productsData.find((p) => p.id === btn.dataset.prodId);
+            if (!prod) return;
+            openInfoModal(`
+              <span class="text-xs font-bold uppercase tracking-wider text-electric-400">${escapeHTML(prod.tag)}</span>
+              <h3 class="font-display text-2xl font-bold text-white mt-1">${escapeHTML(prod.name)}</h3>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">${escapeHTML(prod.summary)}</p>
+              <div class="mt-4 p-4 rounded-2xl bg-navy-900/90 border border-white/10">
+                <div class="text-xs font-bold text-white mb-2">Architecture Highlights</div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                  ${prod.features.map((f) => `<li>• ${escapeHTML(f)}</li>`).join('')}
+                </ul>
+              </div>
+              <p class="mt-4 text-sm text-emerald-300">${escapeHTML(prod.benefits)}</p>
+            `);
+          });
+        });
+      }
+
+      document.querySelectorAll('.product-filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeProductFilter = btn.dataset.filter;
+          document.querySelectorAll('.product-filter-btn').forEach((b) => {
+            const active = b.dataset.filter === activeProductFilter;
+            b.className = active
+              ? 'product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-electric-500 text-white transition'
+              : 'product-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition';
+          });
+          renderProducts();
+        });
+      });
+      renderProducts();
+
+      // 9D. Interactive Demo Sandbox State & Renderer
+      const demoWorkspaces = {
+        neuralpulse: {
+          title: 'innovatex.cloud/app/neuralpulse-v4',
+          leftHeading: 'AI Workflow Prompt & Agent Execution',
+          promptDefault: 'Summarize Q4 churn signals from support logs and draft retention actions.',
+          responseDefault: 'Analyzed 1,240 tickets: 68% of onboarding friction stems from webhook setup. Recommended automated setup wizard + 15-min migration guide (est. +14% activation).',
+          metrics: [
+            { label: 'Response Latency', val: '410 ms' },
+            { label: 'Context Accuracy', val: '98.6%' },
+            { label: 'Tokens Saved', val: '34.2%' },
+          ],
+        },
+        cloudscale: {
+          title: 'innovatex.cloud/app/cloudscale-telemetry',
+          leftHeading: 'Multi-Cluster Cloud & Latency Stream',
+          promptDefault: 'Optimize us-east & eu-central autoscaling policies during peak traffic.',
+          responseDefault: 'Right-sized 14 idle worker nodes and enabled predictive scale-up 8m ahead of peak load. Projected savings: $4,850/mo with p99 latency under 62ms.',
+          metrics: [
+            { label: 'Cluster Uptime', val: '99.99%' },
+            { label: 'p99 Latency', val: '58 ms' },
+            { label: 'Cost Efficiency', val: '+31%' },
+          ],
+        },
+        shieldmesh: {
+          title: 'innovatex.cloud/app/shieldmesh-sentinel',
+          leftHeading: 'Zero-Trust Policy & Threat Posture',
+          promptDefault: 'Audit public API endpoints and token rotation policies.',
+          responseDefault: 'Verified 42 endpoints: 0 critical exposures, 2 legacy keys flagged for 24h rotation, and rate-limiting rules synced across edge nodes.',
+          metrics: [
+            { label: 'Security Score', val: '97 / 100' },
+            { label: 'Blocked Probes', val: '1,920' },
+            { label: 'Compliance', val: 'SOC2 / ISO' },
+          ],
+        },
+      };
+
+      let currentWorkspaceKey = 'neuralpulse';
+      const demoWindowTitle = document.getElementById('demo-window-title');
+      const demoWorkspaceBody = document.getElementById('demo-workspace-body');
+
+      function renderDemoWorkspace(key, customOutput = null) {
+        const ws = demoWorkspaces[key] || demoWorkspaces.neuralpulse;
+        if (demoWindowTitle) demoWindowTitle.textContent = ws.title;
+        if (!demoWorkspaceBody) return;
+
+        const outputText = customOutput || ws.responseDefault;
+
+        demoWorkspaceBody.innerHTML = `
+          <div class="lg:col-span-7 space-y-4">
+            <div class="text-xs font-bold uppercase tracking-wider text-electric-400">${escapeHTML(ws.leftHeading)}</div>
+            <div class="p-3.5 rounded-xl bg-navy-900 border border-white/10 text-xs sm:text-sm text-slate-200">
+              <span class="text-slate-400 font-mono mr-2">&gt;</span>${escapeHTML(ws.promptDefault)}
+            </div>
+            <div id="demo-sim-output" class="p-4 rounded-xl bg-gradient-to-br from-electric-500/10 to-violetx-500/10 border border-electric-400/30 text-xs sm:text-sm text-slate-100 leading-relaxed">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Output Ready</div>
+              ${escapeHTML(outputText)}
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-violetx-400">Live Telemetry Snapshot</div>
+            <div class="grid grid-cols-1 gap-3">
+              ${ws.metrics.map((m) => `
+                <div class="p-3.5 rounded-xl bg-navy-900/90 border border-white/10 flex items-center justify-between">
+                  <span class="text-xs text-slate-400">${escapeHTML(m.label)}</span>
+                  <span class="font-display text-lg font-bold text-white">${escapeHTML(m.val)}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      function switchDemoWorkspace(key, notify = false) {
+        currentWorkspaceKey = key;
+        document.querySelectorAll('.demo-tab-btn').forEach((btn) => {
+          const active = btn.dataset.workspace === key;
+          btn.className = active
+            ? 'demo-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-electric-500 to-violetx-600 text-white shadow'
+            : 'demo-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 text-slate-300 hover:bg-white/10';
+        });
+        renderDemoWorkspace(key);
+        if (notify) showToast('Loaded interactive demo for ' + key.toUpperCase(), 'info');
+      }
+
+      document.querySelectorAll('.demo-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => switchDemoWorkspace(btn.dataset.workspace));
+      });
+
+      document.getElementById('demo-run-sim-btn')?.addEventListener('click', () => {
+        const simStamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const ws = demoWorkspaces[currentWorkspaceKey];
+        renderDemoWorkspace(
+          currentWorkspaceKey,
+          `[${simStamp} Simulation Complete] ${ws.responseDefault} All health checks passed with zero bottlenecks.`
+        );
+        showToast('Simulation run completed!', 'success');
+      });
+
+      renderDemoWorkspace('neuralpulse');
+
+      // -------------------------------------------------------------------
+      // 7. OUR TEAM MEMBERS SECTION
+      // -------------------------------------------------------------------
+      const teamData = [
+        {
+          name: 'Elena Vance',
+          role: 'Founder & CEO',
+          initials: 'EV',
+          grad: 'from-electric-500 to-indigo-600',
+          bio: 'Ex-cloud systems lead driving INNOVATE X vision, strategic partnerships, and category-defining product bets.',
+          linkedin: 'https://linkedin.com',
+        },
+        {
+          name: 'Marcus Sterling',
+          role: 'Co-Founder & COO',
+          initials: 'MS',
+          grad: 'from-violetx-500 to-fuchsia-600',
+          bio: 'Scaling high-velocity delivery squads, enterprise operations, and client success across global markets.',
+          linkedin: 'https://linkedin.com',
+        },
+        {
+          name: 'Dr. Aris Thorne',
+          role: 'Chief Technology Officer',
+          initials: 'AT',
+          grad: 'from-cyan-400 to-blue-600',
+          bio: 'Specializes in applied AI architectures, distributed cloud infrastructure, and low-latency inference engines.',
+          linkedin: 'https://linkedin.com',
+        },
+        {
+          name: 'Sora Takahashi',
+          role: 'Lead UI/UX Designer',
+          initials: 'ST',
+          grad: 'from-purple-500 to-pink-500',
+          bio: 'Crafts futuristic glassmorphic interfaces, cohesive design systems, and frictionless user journeys.',
+          linkedin: 'https://linkedin.com',
+        },
+        {
+          name: 'Devon Brooks & Priya Nair',
+          role: 'Principal Software Developers',
+          initials: 'DP',
+          grad: 'from-emerald-400 to-teal-600',
+          bio: 'Full-stack, mobile, and data engineers building fault-tolerant APIs, real-time apps, and clean codebases.',
+          linkedin: 'https://linkedin.com',
+        },
+        {
+          name: 'Claire Moreau',
+          role: 'Marketing Manager',
+          initials: 'CM',
+          grad: 'from-amber-400 to-orange-500',
+          bio: 'Leads brand storytelling, product launches, technical content, and data-driven growth campaigns.',
+          linkedin: 'https://linkedin.com',
+        },
+      ];
+
+      const teamGrid = document.getElementById('team-grid');
+      if (teamGrid) {
+        teamGrid.innerHTML = teamData.map((member) => `
+          <article class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br ${member.grad} flex items-center justify-center font-display font-bold text-lg text-white shrink-0 shadow-lg">
+                  ${escapeHTML(member.initials)}
+                </div>
+                <div>
+                  <h3 class="font-display text-lg font-bold text-white">${escapeHTML(member.name)}</h3>
+                  <div class="text-xs font-semibold text-electric-400">${escapeHTML(member.role)}</div>
+                </div>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">${escapeHTML(member.bio)}</p>
+            </div>
+
+            <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition">
+              <span>LinkedIn Profile</span>
+              <span class="text-electric-400">↗</span>
+            </a>
+          </article>
+        `).join('');
+      }
+
+      // -------------------------------------------------------------------
+      // 8. ANIMATED COUNTERS & CANVAS STARTUP GROWTH DASHBOARD
+      // -------------------------------------------------------------------
+      let countersStarted = false;
+      function animateCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+        document.querySelectorAll('.counter-num').forEach((el) => {
+          const target = parseInt(el.dataset.target || '0', 10);
+          const suffix = el.dataset.suffix || '';
+          const duration = 1200;
+          const startTime = performance.now();
+
+          function step(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current.toLocaleString() + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      const dashboardSeries = {
+        '6m': {
+          labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+          revenue: [95, 112, 128, 145, 168, 192],
+          projects: [22, 25, 27, 29, 30, 31],
+          csat: [96.8, 97.2, 97.5, 98.0, 98.2, 98.4],
+          revKpi: '$840K',
+          projKpi: '164',
+          csatKpi: '98.4%',
+          momKpi: '+19.6%',
+        },
+        '12m': {
+          labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+          revenue: [58, 66, 74, 82, 89, 95, 112, 128, 145, 168, 180, 192],
+          projects: [14, 16, 17, 19, 20, 22, 25, 27, 29, 30, 31, 31],
+          csat: [95.4, 95.8, 96.1, 96.4, 96.6, 96.8, 97.2, 97.5, 98.0, 98.2, 98.3, 98.4],
+          revKpi: '$1.36M',
+          projKpi: '290',
+          csatKpi: '98.4%',
+          momKpi: '+24.1%',
+        },
+      };
+
+      let activePeriod = '6m';
+
+      function drawCanvasCharts() {
+        const data = dashboardSeries[activePeriod] || dashboardSeries['6m'];
+
+        // Update KPI cards
+        const revEl = document.getElementById('dash-kpi-rev');
+        const projEl = document.getElementById('dash-kpi-proj');
+        const csatEl = document.getElementById('dash-kpi-csat');
+        const momEl = document.getElementById('dash-kpi-mom');
+        if (revEl) revEl.textContent = data.revKpi;
+        if (projEl) projEl.textContent = data.projKpi;
+        if (csatEl) csatEl.textContent = data.csatKpi;
+        if (momEl) momEl.textContent = data.momKpi;
+
+        // 1. Bar Chart: Revenue & Projects
+        const barCanvas = document.getElementById('growth-bar-canvas');
+        if (barCanvas && barCanvas.parentElement) {
+          const rect = barCanvas.parentElement.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          barCanvas.width = Math.max(280, rect.width) * dpr;
+          barCanvas.height = Math.max(180, rect.height) * dpr;
+
+          const ctx = barCanvas.getContext('2d');
+          ctx.scale(dpr, dpr);
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const padL = 36;
+          const padR = 14;
+          const padT = 18;
+          const padB = 28;
+          const plotW = w - padL - padR;
+          const plotH = h - padT - padB;
+          const maxVal = Math.max(...data.revenue) * 1.15;
+          const stepX = plotW / data.labels.length;
+          const barW = Math.min(22, stepX * 0.34);
+
+          // Grid lines
+          ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+          ctx.lineWidth = 1;
+          for (let i = 0; i <= 4; i++) {
+            const y = padT + (plotH / 4) * i;
+            ctx.beginPath();
+            ctx.moveTo(padL, y);
+            ctx.lineTo(w - padR, y);
+            ctx.stroke();
+          }
+
+          data.labels.forEach((lbl, idx) => {
+            const cx = padL + stepX * idx + stepX / 2;
+            const revH = (data.revenue[idx] / maxVal) * plotH;
+            const projH = ((data.projects[idx] * 5) / maxVal) * plotH;
+
+            // Revenue bar (electric blue)
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.roundRect(cx - barW - 2, padT + plotH - revH, barW, revH, 4);
+            ctx.fill();
+
+            // Projects bar (violet)
+            ctx.fillStyle = '#a78bfa';
+            ctx.beginPath();
+            ctx.roundRect(cx + 2, padT + plotH - projH, barW, projH, 4);
+            ctx.fill();
+
+            // X label
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(lbl, cx, h - 8);
+          });
+        }
+
+        // 2. Line Chart: CSAT Trend
+        const lineCanvas = document.getElementById('csat-line-canvas');
+        if (lineCanvas && lineCanvas.parentElement) {
+          const rect = lineCanvas.parentElement.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          lineCanvas.width = Math.max(280, rect.width) * dpr;
+          lineCanvas.height = Math.max(180, rect.height) * dpr;
+
+          const ctx = lineCanvas.getContext('2d');
+          ctx.scale(dpr, dpr);
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const padL = 40;
+          const padR = 16;
+          const padT = 18;
+          const padB = 28;
+          const plotW = w - padL - padR;
+          const plotH = h - padT - padB;
+
+          const minCsat = 94;
+          const maxCsat = 100;
+
+          ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+          for (let i = 0; i <= 3; i++) {
+            const y = padT + (plotH / 3) * i;
+            ctx.beginPath();
+            ctx.moveTo(padL, y);
+            ctx.lineTo(w - padR, y);
+            ctx.stroke();
+
+            const val = (maxCsat - ((maxCsat - minCsat) / 3) * i).toFixed(1) + '%';
+            ctx.fillStyle = '#64748b';
+            ctx.font = '10px Inter, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(val, padL - 6, y + 3);
+          }
+
+          const points = data.csat.map((val, idx) => {
+            const x = padL + (plotW / Math.max(1, data.csat.length - 1)) * idx;
+            const norm = Math.max(0, Math.min(1, (val - minCsat) / (maxCsat - minCsat)));
+            const y = padT + plotH - norm * plotH;
+            return { x, y, val, lbl: data.labels[idx] };
+          });
+
+          // Area fill
+          ctx.beginPath();
+          points.forEach((pt, idx) => {
+            if (idx === 0) ctx.moveTo(pt.x, pt.y);
+            else ctx.lineTo(pt.x, pt.y);
+          });
+          ctx.lineTo(points[points.length - 1].x, padT + plotH);
+          ctx.lineTo(points[0].x, padT + plotH);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.14)';
+          ctx.fill();
+
+          // Stroke line
+          ctx.beginPath();
+          points.forEach((pt, idx) => {
+            if (idx === 0) ctx.moveTo(pt.x, pt.y);
+            else ctx.lineTo(pt.x, pt.y);
+          });
+          ctx.strokeStyle = '#34d399';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          // Dots & x labels
+          points.forEach((pt) => {
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#34d399';
+            ctx.fill();
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(pt.lbl, pt.x, h - 8);
+          });
+        }
+      }
+
+      document.querySelectorAll('.dash-period-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activePeriod = btn.dataset.period;
+          document.querySelectorAll('.dash-period-btn').forEach((b) => {
+            const active = b.dataset.period === activePeriod;
+            b.className = active
+              ? 'dash-period-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-electric-500 text-white transition'
+              : 'dash-period-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition';
+          });
+          drawCanvasCharts();
+        });
+      });
+
+      window.addEventListener('resize', drawCanvasCharts);
+      drawCanvasCharts();
+
+      // -------------------------------------------------------------------
+      // 9. CUSTOMER TESTIMONIALS CAROUSEL + SUBMIT REVIEW FORM
+      // -------------------------------------------------------------------
+      const testimonials = [
+        {
+          name: 'Daniel Cho',
+          company: 'CTO, AetherLogistics',
+          initials: 'DC',
+          rating: 5,
+          quote: 'INNOVATE X rebuilt our dispatch platform and deployed custom AI triage agents in 8 weeks. Latency dropped by 48% and ops teams love it.',
+        },
+        {
+          name: 'Sofia Lindqvist',
+          company: 'VP Product, NordPay',
+          initials: 'SL',
+          rating: 5,
+          quote: 'Rare blend of futuristic design craft and rock-solid engineering. Their cost estimator and roadmap planning were spot-on from day one.',
+        },
+        {
+          name: 'Liam O’Connor',
+          company: 'Founder, MedGrid Health',
+          initials: 'LO',
+          rating: 5,
+          quote: 'From cloud architecture to security hardening and mobile UX, INNOVATE X acted like an extension of our own founding team.',
+        },
+      ];
+
+      let testimonialIdx = 0;
+      let autoCarouselTimer = null;
+      let isCarouselPaused = false;
+
+      const activeCardEl = document.getElementById('testimonial-active-card');
+      const dotsEl = document.getElementById('testimonial-dots');
+      const toggleCarouselBtn = document.getElementById('toggle-carousel-btn');
+
+      function renderTestimonials() {
+        if (!activeCardEl || !dotsEl) return;
+        const item = testimonials[testimonialIdx] || testimonials[0];
+        const stars = '★'.repeat(item.rating) + '☆'.repeat(Math.max(0, 5 - item.rating));
+
+        activeCardEl.innerHTML = `
+          <div>
+            <div class="text-amber-400 text-sm tracking-wider mb-3">${stars}</div>
+            <p class="text-sm sm:text-base text-slate-100 leading-relaxed italic">"${escapeHTML(item.quote)}"</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-electric-500 to-violetx-600 flex items-center justify-center font-display font-bold text-sm text-white shrink-0">
+              ${escapeHTML(item.initials)}
+            </div>
+            <div>
+              <div class="font-display text-sm font-bold text-white">${escapeHTML(item.name)}</div>
+              <div class="text-xs text-slate-400">${escapeHTML(item.company)}</div>
+            </div>
+          </div>
+        `;
+
+        dotsEl.innerHTML = testimonials.map((_, i) => `
+          <button type="button" aria-label="Show Review ${i + 1}" data-dot="${i}" class="h-2 rounded-full transition-all ${i === testimonialIdx ? 'w-7 bg-electric-400' : 'w-2 bg-white/25 hover:bg-white/40'}"></button>
+        `).join('');
+
+        dotsEl.querySelectorAll('button').forEach((dot) => {
+          dot.addEventListener('click', () => {
+            testimonialIdx = parseInt(dot.dataset.dot, 10);
+            renderTestimonials();
+          });
+        });
+      }
+
+      function nextTestimonial() {
+        testimonialIdx = (testimonialIdx + 1) % testimonials.length;
+        renderTestimonials();
+      }
+
+      function prevTestimonial() {
+        testimonialIdx = (testimonialIdx - 1 + testimonials.length) % testimonials.length;
+        renderTestimonials();
+      }
+
+      function startAutoCarousel() {
+        stopAutoCarousel();
+        if (!isCarouselPaused) {
+          autoCarouselTimer = setInterval(nextTestimonial, 5000);
+        }
+      }
+
+      function stopAutoCarousel() {
+        if (autoCarouselTimer) clearInterval(autoCarouselTimer);
+      }
+
+      document.getElementById('next-testimonial-btn')?.addEventListener('click', nextTestimonial);
+      document.getElementById('prev-testimonial-btn')?.addEventListener('click', prevTestimonial);
+      toggleCarouselBtn?.addEventListener('click', () => {
+        isCarouselPaused = !isCarouselPaused;
+        toggleCarouselBtn.textContent = isCarouselPaused ? 'Resume Auto' : 'Pause Auto';
+        startAutoCarousel();
+      });
+
+      document.getElementById('review-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('rev-name')?.value.trim();
+        const company = document.getElementById('rev-company')?.value.trim();
+        const rating = parseInt(document.getElementById('rev-rating')?.value || '5', 10);
+        const quote = document.getElementById('rev-quote')?.value.trim();
+
+        if (!name || !company || !quote) {
+          showToast('Please fill in your name, company/role, and feedback.', 'error');
+          return;
+        }
+
+        const initials = name.split(/\s+/).map((p) => p[0]).join('').slice(0, 2).toUpperCase() || 'IX';
+        testimonials.unshift({ name, company, initials, rating, quote });
+        testimonialIdx = 0;
+        renderTestimonials();
+        e.target.reset();
+        showToast('Thank you! Your review has been added.', 'success');
+      });
+
+      renderTestimonials();
+      startAutoCarousel();
+
+      // -------------------------------------------------------------------
+      // 10. AI SUITE: COST ESTIMATOR (9B), SOLUTION FINDER (9C), BOOKING (9F), NEWSLETTER (9G)
+      // -------------------------------------------------------------------
+      let complexityMult = 1.0;
+      const estTypeSelect = document.getElementById('est-type');
+      const estTotalPriceEl = document.getElementById('est-total-price');
+      const estTimelineEl = document.getElementById('est-timeline');
+
+      function calculateEstimate() {
+        if (!estTypeSelect || !estTotalPriceEl || !estTimelineEl) return;
+        const baseCost = parseFloat(estTypeSelect.value || '14000');
+        const selectedOption = estTypeSelect.options[estTypeSelect.selectedIndex];
+        let weeks = parseInt(selectedOption?.dataset.weeks || '4', 10);
+
+        let featuresCost = 0;
+        document.querySelectorAll('.est-feat:checked').forEach((chk) => {
+          featuresCost += parseFloat(chk.value || '0');
+          weeks += parseInt(chk.dataset.weeks || '0', 10);
+        });
+
+        const total = Math.round((baseCost + featuresCost) * complexityMult);
+        estTotalPriceEl.textContent = '$' + total.toLocaleString();
+        estTimelineEl.textContent = `Est. Delivery: ~${weeks} Weeks (${complexityMult}x tier)`;
+      }
+
+      document.querySelectorAll('.est-comp-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          complexityMult = parseFloat(btn.dataset.mult || '1.0');
+          document.querySelectorAll('.est-comp-btn').forEach((b) => {
+            const active = parseFloat(b.dataset.mult) === complexityMult;
+            b.className = active
+              ? 'est-comp-btn py-2 px-3 rounded-xl text-xs font-semibold bg-electric-500 text-white transition'
+              : 'est-comp-btn py-2 px-3 rounded-xl text-xs font-semibold bg-white/5 text-slate-300 hover:bg-white/10 transition';
+          });
+          calculateEstimate();
+        });
+      });
+
+      estTypeSelect?.addEventListener('change', calculateEstimate);
+      document.querySelectorAll('.est-feat').forEach((chk) => chk.addEventListener('change', calculateEstimate));
+      calculateEstimate();
+
+      // 9C. AI Solution Finder
+      const finderRecommendations = {
+        automation: {
+          services: ['Artificial Intelligence Solutions', 'Web Application Development'],
+          product: 'NeuralPulse AI Studio',
+          rationale: 'Deploy retrieval-augmented AI agents with human-in-the-loop approvals to resolve repetitive tickets and automate multi-step workflows.',
+        },
+        scale: {
+          services: ['Cloud Computing', 'Web Application Development', 'Mobile App Development'],
+          product: 'CloudScale Telemetry',
+          rationale: 'Modernize bottlenecks with containerized cloud microservices, autoscaling policies, and real-time latency tracking.',
+        },
+        insights: {
+          services: ['Data Analytics', 'Artificial Intelligence Solutions'],
+          product: 'CloudScale Telemetry + BI Layer',
+          rationale: 'Unify siloed event and product data into real-time dashboards and predictive forecasting models.',
+        },
+        growth: {
+          services: ['UI/UX Design', 'Cybersecurity Solutions', 'Digital Marketing'],
+          product: 'ShieldMesh Sentinel + Growth UX',
+          rationale: 'Elevate conversion flows with high-craft UX, strengthen trust with security controls, and scale qualified demand.',
+        },
+      };
+
+      const finderResultEl = document.getElementById('finder-result');
+      function renderSolutionRecommendation() {
+        const challenge = document.getElementById('finder-challenge')?.value || 'automation';
+        const notes = document.getElementById('finder-notes')?.value.trim();
+        const rec = finderRecommendations[challenge] || finderRecommendations.automation;
+        if (!finderResultEl) return;
+
+        finderResultEl.innerHTML = `
+          <div class="text-xs font-bold uppercase tracking-wider text-violetx-300">Recommended Architecture</div>
+          <div class="text-sm font-bold text-white">Services: <span class="text-electric-400">${escapeHTML(rec.services.join(' + '))}</span></div>
+          <div class="text-xs text-slate-300">Suggested Accelerator: <strong class="text-white">${escapeHTML(rec.product)}</strong></div>
+          <p class="text-xs text-slate-300 leading-relaxed">${escapeHTML(rec.rationale)}</p>
+          ${notes ? `<div class="text-[11px] text-slate-400 pt-1 border-t border-white/10">Tailored for: "${escapeHTML(notes)}"</div>` : ''}
+        `;
+      }
+
+      document.getElementById('finder-recommend-btn')?.addEventListener('click', () => {
+        renderSolutionRecommendation();
+        showToast('AI Solution recommendation updated!', 'info');
+      });
+      renderSolutionRecommendation();
+
+      // 9F. Smart Appointment Booking
+      const bookDateInput = document.getElementById('book-date');
+      if (bookDateInput) {
+        const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+        bookDateInput.min = new Date().toISOString().split('T')[0];
+        bookDateInput.value = tomorrow;
+      }
+
+      document.getElementById('booking-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('book-name')?.value.trim();
+        const email = document.getElementById('book-email')?.value.trim();
+        const date = document.getElementById('book-date')?.value;
+        const time = document.getElementById('book-time')?.value;
+        const type = document.getElementById('book-type')?.value;
+        const confBox = document.getElementById('booking-confirmation');
+
+        if (!name || !email || !email.includes('@') || !date) {
+          showToast('Please enter a valid name, work email, and date.', 'error');
+          return;
+        }
+
+        if (confBox) {
+          confBox.classList.remove('hidden');
+          confBox.innerHTML = `
+            <strong>✓ Appointment Reserved!</strong><br/>
+            <span>${escapeHTML(type)}</span> for <strong>${escapeHTML(name)}</strong> (${escapeHTML(email)}) on <strong>${escapeHTML(date)}</strong> at <strong>${escapeHTML(time)}</strong>.
+          `;
+        }
+        showToast('Appointment confirmed! Calendar details prepared.', 'success');
+      });
+
+      // 9G. Newsletter Form
+      document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('news-email')?.value.trim();
+        const msgEl = document.getElementById('newsletter-msg');
+
+        if (!email || !email.includes('@')) {
+          showToast('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        if (msgEl) {
+          msgEl.className = 'text-xs text-emerald-400 font-medium';
+          msgEl.textContent = `Subscribed ${email} to INNOVATE X monthly releases & insights.`;
+        }
+        e.target.reset();
+        showToast('Subscribed to INNOVATE X updates!', 'success');
+      });
+
+      // -------------------------------------------------------------------
+      // 11. 9A. AI BUSINESS ASSISTANT CHAT WIDGET
+      // -------------------------------------------------------------------
+      const chatPanel = document.getElementById('ai-chat-panel');
+      const chatToggle = document.getElementById('ai-chat-toggle');
+      const chatClose = document.getElementById('ai-chat-close');
+      const chatForm = document.getElementById('ai-chat-form');
+      const chatInput = document.getElementById('ai-chat-input');
+      const chatMessages = document.getElementById('ai-chat-messages');
+
+      function toggleChat(forceOpen = null) {
+        if (!chatPanel) return;
+        const shouldOpen = forceOpen !== null ? forceOpen : chatPanel.classList.contains('hidden');
+        chatPanel.classList.toggle('hidden', !shouldOpen);
+      }
+
+      chatToggle?.addEventListener('click', () => toggleChat());
+      chatClose?.addEventListener('click', () => toggleChat(false));
+
+      function generateAssistantReply(query) {
+        const q = query.toLowerCase();
+        if (q.includes('price') || q.includes('cost') || q.includes('estimate') || q.includes('pricing')) {
+          return 'Project estimates typically start around $14,000–$18,000 for focused builds and scale with complexity and modules. Try our Smart Project Cost Estimator in the AI Suite section for an instant live quote!';
+        }
+        if (q.includes('service') || q.includes('ai') || q.includes('product') || q.includes('cloud')) {
+          return 'We offer 8 core practices—AI Solutions, Web Apps, Mobile Apps, Cloud Computing, Data Analytics, UI/UX Design, Cybersecurity, and Digital Marketing—plus flagship products like NeuralPulse AI Studio and CloudScale Telemetry.';
+        }
+        if (q.includes('support') || q.includes('sla') || q.includes('contact') || q.includes('book')) {
+          return 'You can reach our team at hello@innovatex.io, via WhatsApp Support in Contact, or book a discovery call in Smart Appointment Booking. Active clients also have 24/7 ticket tracking in the Customer Portal.';
+        }
+        return 'INNOVATE X helps startups and enterprises ship AI-powered software, cloud platforms, and high-converting digital experiences. Ask about services, pricing, product demos, or careers!';
+      }
+
+      function sendChatMessage(text) {
+        const clean = text.trim();
+        if (!clean || !chatMessages) return;
+
+        chatMessages.innerHTML += `
+          <div class="p-3 rounded-2xl rounded-tr-sm bg-electric-500/20 border border-electric-400/30 text-white ml-6">
+            ${escapeHTML(clean)}
+          </div>
+        `;
+
+        const reply = generateAssistantReply(clean);
+        setTimeout(() => {
+          chatMessages.innerHTML += `
+            <div class="p-3 rounded-2xl rounded-tl-sm bg-navy-800/90 border border-white/10 text-slate-200 mr-4 leading-relaxed">
+              ${escapeHTML(reply)}
+            </div>
+          `;
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 220);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      chatForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!chatInput) return;
+        sendChatMessage(chatInput.value);
+        chatInput.value = '';
+      });
+
+      document.querySelectorAll('.ai-quick-prompt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          toggleChat(true);
+          sendChatMessage(btn.textContent);
+        });
+      });
+
+      // -------------------------------------------------------------------
+      // 12. CAREERS SECTION (Open Jobs + Apply Now + Resume Upload)
+      // -------------------------------------------------------------------
+      const jobsData = [
+        {
+          title: 'Senior AI & LLM Engineer',
+          loc: 'Remote / San Francisco',
+          type: 'Full-Time',
+          desc: 'Design agentic workflows, RAG pipelines, evaluation harnesses, and low-latency inference APIs.',
+          skills: ['Python / TypeScript', 'LLM & Vector DBs', 'Docker / FastAPI'],
+        },
+        {
+          title: 'Full-Stack Product Engineer (React/Node)',
+          loc: 'Hybrid / Remote',
+          type: 'Full-Time',
+          desc: 'Build responsive SaaS interfaces, real-time collaborative workspaces, and resilient backend services.',
+          skills: ['React / Next / TS', 'Node.js / PostgreSQL', 'REST & WebSockets'],
+        },
+        {
+          title: 'Senior UI/UX & Design Systems Designer',
+          loc: 'Remote',
+          type: 'Full-Time',
+          desc: 'Craft futuristic product interfaces, interactive prototypes, and accessible multi-brand design tokens.',
+          skills: ['Figma & Design Tokens', 'UX Research', 'Motion & Accessibility'],
+        },
+        {
+          title: 'Cloud Security & DevOps Architect',
+          loc: 'Remote / Hybrid',
+          type: 'Full-Time',
+          desc: 'Automate Kubernetes clusters, Terraform infrastructure, zero-trust policies, and observability.',
+          skills: ['AWS / GCP / K8s', 'Terraform & CI/CD', 'IAM & Threat Defense'],
+        },
+      ];
+
+      const jobsListEl = document.getElementById('jobs-list');
+      const appRoleSelect = document.getElementById('app-role');
+
+      if (jobsListEl) {
+        jobsListEl.innerHTML = jobsData.map((job) => `
+          <div class="glass-card rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+              <div>
+                <h3 class="font-display text-lg font-bold text-white">${escapeHTML(job.title)}</h3>
+                <div class="text-xs text-slate-400 mt-0.5">${escapeHTML(job.loc)} • <span class="text-electric-400">${escapeHTML(job.type)}</span></div>
+              </div>
+              <button type="button" data-job-title="${escapeHTML(job.title)}" class="apply-job-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-white btn-primary-glow">
+                Apply Now
+              </button>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed my-3">${escapeHTML(job.desc)}</p>
+            <div class="flex flex-wrap gap-1.5">
+              ${job.skills.map((sk) => `<span class="px-2.5 py-1 rounded-lg text-[11px] bg-white/5 border border-white/10 text-slate-300">${escapeHTML(sk)}</span>`).join('')}
+            </div>
+          </div>
+        `).join('');
+
+        jobsListEl.querySelectorAll('.apply-job-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            if (appRoleSelect) appRoleSelect.value = btn.dataset.jobTitle;
+            document.getElementById('career-apply-box')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            showToast('Selected role: ' + btn.dataset.jobTitle, 'info');
+          });
+        });
+      }
+
+      const resumeInput = document.getElementById('app-resume');
+      const resumeInfo = document.getElementById('resume-file-info');
+      resumeInput?.addEventListener('change', () => {
+        const file = resumeInput.files && resumeInput.files[0];
+        if (resumeInfo) {
+          resumeInfo.textContent = file
+            ? `Attached: ${file.name} (${Math.max(1, Math.round(file.size / 1024))} KB)`
+            : '';
+        }
+      });
+
+      document.getElementById('career-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const role = document.getElementById('app-role')?.value;
+        const name = document.getElementById('app-name')?.value.trim();
+        const email = document.getElementById('app-email')?.value.trim();
+        const file = resumeInput?.files && resumeInput.files[0];
+
+        if (!name || !email || !email.includes('@')) {
+          showToast('Please provide your full name and a valid email address.', 'error');
+          return;
+        }
+        if (!file) {
+          showToast('Please attach your resume file before submitting.', 'error');
+          return;
+        }
+
+        e.target.reset();
+        if (resumeInfo) resumeInfo.textContent = '';
+        showToast(`Application submitted for ${role} (${file.name})!`, 'success');
+      });
+
+      // -------------------------------------------------------------------
+      // 13. CUSTOMER PORTAL (Projects, Profile, Support, Meetings, Notifs, Settings)
+      // -------------------------------------------------------------------
+      const portalState = {
+        activeTab: 'projects',
+        profile: {
+          name: 'Alex Morgan',
+          role: 'VP of Engineering • NovaScale Labs',
+          email: 'alex.morgan@novascale.io',
+          plan: 'Enterprise Growth Partner',
+        },
+        projects: [
+          { name: 'NeuralPulse Customer Copilot', phase: 'QA & Model Tuning', progress: 84, eta: 'Dec 12, 2026' },
+          { name: 'Multi-Region Cloud Migration', phase: 'Production Cutover', progress: 92, eta: 'Dec 04, 2026' },
+          { name: 'Executive BI & Churn Analytics', phase: 'Dashboard Build', progress: 65, eta: 'Jan 15, 2027' },
+        ],
+        tickets: [
+          { id: 'SUP-409', subject: 'Custom SSO SAML metadata sync', status: 'Resolved', updated: '2h ago' },
+          { id: 'SUP-414', subject: 'Increase staging vector index quota', status: 'In Progress', updated: '25m ago' },
+        ],
+        meetings: [
+          { title: 'Weekly Sprint & Architecture Sync', date: 'Nov 26, 2026', time: '11:30 AM', host: 'Dr. Aris Thorne (CTO)' },
+          { title: 'AI Copilot Evaluation Review', date: 'Dec 02, 2026', time: '02:00 PM', host: 'Elena Vance (CEO)' },
+        ],
+        notifications: [
+          'Build #412 passed all automated integration & security checks.',
+          'New analytics export ready in CloudScale Telemetry.',
+          'Monthly SLA uptime report (99.98%) published.',
+        ],
+        settings: {
+          emailAlerts: true,
+          slackWebhooks: true,
+          twoFactor: true,
+        },
+      };
+
+      const portalContentEl = document.getElementById('portal-content');
+
+      function renderPortalTab() {
+        if (!portalContentEl) return;
+        const tab = portalState.activeTab;
+
+        document.querySelectorAll('.portal-tab-btn').forEach((btn) => {
+          const active = btn.dataset.ptab === tab;
+          btn.className = active
+            ? 'portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold bg-electric-500 text-white transition'
+            : 'portal-tab-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:bg-white/5 transition';
+        });
+
+        if (tab === 'projects') {
+          portalContentEl.innerHTML = `
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="font-display text-xl font-bold text-white">My Active Projects & Progress</h3>
+              <span class="text-xs text-electric-400 font-semibold">${portalState.projects.length} Active Initiatives</span>
+            </div>
+            <div class="space-y-4">
+              ${portalState.projects.map((p) => `
+                <div class="p-4 sm:p-5 rounded-2xl bg-navy-900/80 border border-white/10">
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div>
+                      <div class="font-display text-base font-bold text-white">${escapeHTML(p.name)}</div>
+                      <div class="text-xs text-slate-400">Current Phase: <span class="text-violetx-300">${escapeHTML(p.phase)}</span> • Target ETA: ${escapeHTML(p.eta)}</div>
+                    </div>
+                    <span class="font-display text-lg font-bold text-electric-400">${p.progress}%</span>
+                  </div>
+                  <div class="w-full h-2.5 rounded-full bg-navy-950 overflow-hidden">
+                    <div class="h-full rounded-full bg-gradient-to-r from-electric-500 to-violetx-500" style="width: ${p.progress}%"></div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else if (tab === 'profile') {
+          portalContentEl.innerHTML = `
+            <h3 class="font-display text-xl font-bold text-white mb-4">User Profile</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10">
+                <div class="text-xs text-slate-400">Account Holder</div>
+                <div class="font-semibold text-white mt-1">${escapeHTML(portalState.profile.name)}</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10">
+                <div class="text-xs text-slate-400">Role & Organization</div>
+                <div class="font-semibold text-white mt-1">${escapeHTML(portalState.profile.role)}</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10">
+                <div class="text-xs text-slate-400">Primary Email</div>
+                <div class="font-semibold text-electric-400 mt-1">${escapeHTML(portalState.profile.email)}</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10">
+                <div class="text-xs text-slate-400">Partnership Tier</div>
+                <div class="font-semibold text-violetx-300 mt-1">${escapeHTML(portalState.profile.plan)}</div>
+              </div>
+            </div>
+          `;
+        } else if (tab === 'support') {
+          portalContentEl.innerHTML = `
+            <h3 class="font-display text-xl font-bold text-white mb-4">Support Requests</h3>
+            <div class="space-y-3 mb-5">
+              ${portalState.tickets.map((t) => `
+                <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+                  <div>
+                    <span class="font-mono text-electric-400 mr-2">${escapeHTML(t.id)}</span>
+                    <span class="font-semibold text-white">${escapeHTML(t.subject)}</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="px-2.5 py-1 rounded-lg text-xs font-semibold ${t.status === 'Resolved' ? 'bg-emerald-500/15 text-emerald-300' : 'bg-amber-500/15 text-amber-300'}">${escapeHTML(t.status)}</span>
+                    <span class="text-slate-400">${escapeHTML(t.updated)}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            <form id="portal-ticket-form" class="flex flex-col sm:flex-row gap-2.5">
+              <input id="portal-ticket-input" type="text" placeholder="Describe a new support request..." class="flex-1 px-3.5 py-2.5 rounded-xl bg-navy-950/90 border border-white/15 text-sm text-white focus:outline-none focus:border-electric-400" />
+              <button type="submit" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-white btn-primary-glow">New Ticket</button>
+            </form>
+          `;
+
+          document.getElementById('portal-ticket-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inp = document.getElementById('portal-ticket-input');
+            const subj = inp?.value.trim();
+            if (!subj) {
+              showToast('Enter a support ticket subject first.', 'error');
+              return;
+            }
+            const nextNum = 415 + portalState.tickets.length;
+            portalState.tickets.unshift({ id: `SUP-${nextNum}`, subject: subj, status: 'In Progress', updated: 'Just now' });
+            renderPortalTab();
+            showToast(`Ticket SUP-${nextNum} created!`, 'success');
+          });
+        } else if (tab === 'meetings') {
+          portalContentEl.innerHTML = `
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-display text-xl font-bold text-white">Meeting Schedule</h3>
+              <a href="#booking" class="text-xs font-semibold text-electric-400 hover:underline">+ Schedule Another</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${portalState.meetings.map((m) => `
+                <div class="p-4 rounded-2xl bg-navy-900/80 border border-white/10 space-y-1.5">
+                  <div class="font-display text-base font-bold text-white">${escapeHTML(m.title)}</div>
+                  <div class="text-xs text-electric-300">${escapeHTML(m.date)} • ${escapeHTML(m.time)}</div>
+                  <div class="text-xs text-slate-400">Host: ${escapeHTML(m.host)}</div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else if (tab === 'notifications') {
+          portalContentEl.innerHTML = `
+            <h3 class="font-display text-xl font-bold text-white mb-4">Notifications</h3>
+            <ul class="space-y-2.5 text-sm">
+              ${portalState.notifications.map((n) => `
+                <li class="p-3.5 rounded-2xl bg-navy-900/80 border border-white/10 flex items-center gap-3 text-slate-200">
+                  <span class="w-2 h-2 rounded-full bg-electric-400 shrink-0"></span>
+                  <span>${escapeHTML(n)}</span>
+                </li>
+              `).join('')}
+            </ul>
+          `;
+        } else if (tab === 'settings') {
+          portalContentEl.innerHTML = `
+            <h3 class="font-display text-xl font-bold text-white mb-4">Account Settings</h3>
+            <div class="space-y-3 text-sm max-w-xl">
+              <label class="flex items-center justify-between p-4 rounded-2xl bg-navy-900/80 border border-white/10 cursor-pointer">
+                <span>Milestone & Deployment Email Alerts</span>
+                <input type="checkbox" id="set-email" class="accent-sky-400 w-4 h-4" ${portalState.settings.emailAlerts ? 'checked' : ''} />
+              </label>
+              <label class="flex items-center justify-between p-4 rounded-2xl bg-navy-900/80 border border-white/10 cursor-pointer">
+                <span>Real-Time Slack / Webhook Digest</span>
+                <input type="checkbox" id="set-slack" class="accent-sky-400 w-4 h-4" ${portalState.settings.slackWebhooks ? 'checked' : ''} />
+              </label>
+              <label class="flex items-center justify-between p-4 rounded-2xl bg-navy-900/80 border border-white/10 cursor-pointer">
+                <span>Hardware / Authenticator 2FA</span>
+                <input type="checkbox" id="set-2fa" class="accent-sky-400 w-4 h-4" ${portalState.settings.twoFactor ? 'checked' : ''} />
+              </label>
+              <button id="save-portal-settings-btn" type="button" class="px-5 py-2.5 rounded-xl text-xs font-semibold text-white btn-primary-glow mt-2">
+                Save Preferences
+              </button>
+            </div>
+          `;
+
+          document.getElementById('save-portal-settings-btn')?.addEventListener('click', () => {
+            portalState.settings.emailAlerts = !!document.getElementById('set-email')?.checked;
+            portalState.settings.slackWebhooks = !!document.getElementById('set-slack')?.checked;
+            portalState.settings.twoFactor = !!document.getElementById('set-2fa')?.checked;
+            showToast('Account settings saved!', 'success');
+          });
+        }
+      }
+
+      document.querySelectorAll('.portal-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          portalState.activeTab = btn.dataset.ptab;
+          renderPortalTab();
+        });
+      });
+      renderPortalTab();
+
+      // -------------------------------------------------------------------
+      // 14. CONTACT FORM, LEGAL MODALS & SCROLL REVEAL OBSERVER
+      // -------------------------------------------------------------------
+      document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('cnt-name')?.value.trim();
+        const email = document.getElementById('cnt-email')?.value.trim();
+        const subject = document.getElementById('cnt-subject')?.value.trim();
+        const message = document.getElementById('cnt-message')?.value.trim();
+
+        if (!name || !email || !email.includes('@') || !subject || !message) {
+          showToast('Please complete all required contact fields with a valid email.', 'error');
+          return;
+        }
+
+        e.target.reset();
+        showToast(`Thanks ${name}! Your inquiry has been received by INNOVATE X.`, 'success');
+      });
+
+      const legalDocs = {
+        privacy: {
+          title: 'Privacy Policy – INNOVATE X',
+          body: 'INNOVATE X respects your privacy. Information submitted through contact forms, cost estimators, appointment scheduling, or portal previews is used solely to respond to inquiries and deliver requested services. We never sell personal data to third-party brokers.',
+        },
+        terms: {
+          title: 'Terms and Conditions – INNOVATE X',
+          body: 'All interactive estimates, telemetry snapshots, and sandbox simulations provided on this site are for planning and demonstration purposes; final project scope, SLAs, and deliverables are governed by executed master service agreements.',
+        },
+      };
+
+      document.querySelectorAll('.legal-modal-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const doc = legalDocs[btn.dataset.legal] || legalDocs.privacy;
+          openInfoModal(`
+            <span class="text-xs font-bold uppercase tracking-wider text-electric-400">Legal Notice</span>
+            <h3 class="font-display text-2xl font-bold text-white mt-1 mb-3">${escapeHTML(doc.title)}</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">${escapeHTML(doc.body)}</p>
+          `);
+        });
+      });
+
+      const yearEl = document.getElementById('copyright-year');
+      if (yearEl) yearEl.textContent = String(Math.max(2026, new Date().getFullYear()));
+
+      // Intersection Observer for section reveals & counter trigger
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              if (entry.target.id === 'stats') {
+                animateCounters();
+                drawCanvasCharts();
+              }
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll('.reveal-on-scroll').forEach((sec) => observer.observe(sec));
+    })();
+  </script>
+</body>
+</html>
